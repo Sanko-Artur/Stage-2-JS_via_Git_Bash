@@ -1,0 +1,339 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 8,
+    "passes": 6,
+    "pending": 0,
+    "failures": 2,
+    "start": "2022-01-12T11:25:20.907Z",
+    "end": "2022-01-12T11:25:20.932Z",
+    "duration": 25,
+    "testsRegistered": 8,
+    "passPercent": 75,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "cf7ac69f-ac40-4924-8563-a83953051646",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3e305183-3017-4046-b3e4-0f1a34b2e13d",
+          "title": "add positive scenarios for add",
+          "fullFile": "D:\\QA\\JavaScript\\WebStorm task\\epam\\Stage 2\\Unit 8 - Unit Testing Framework\\HW\\test\\specs\\add.spec.js",
+          "file": "\\test\\specs\\add.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"add positive scenarios for add\"",
+              "fullTitle": "add positive scenarios for add \"before each\" hook in \"add positive scenarios for add\"",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "sumOfNumbers = new Calculator();",
+              "err": {},
+              "uuid": "ad7244d6-b852-4dce-a584-338cca4607b9",
+              "parentUUID": "3e305183-3017-4046-b3e4-0f1a34b2e13d",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"add positive scenarios for add\"",
+              "fullTitle": "add positive scenarios for add \"after each\" hook in \"add positive scenarios for add\"",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "sumOfNumbers = null;",
+              "err": {},
+              "uuid": "d94d77a6-7d9c-4a37-9b0b-71e30434189a",
+              "parentUUID": "3e305183-3017-4046-b3e4-0f1a34b2e13d",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should return 9.5 when called add with numbers 4 and 5.5",
+              "fullTitle": "add positive scenarios for add should return 9.5 when called add with numbers 4 and 5.5",
+              "timedOut": false,
+              "duration": 1,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(sumOfNumbers.add(4, 5.5)).to.be.equal(9.5);",
+              "err": {},
+              "uuid": "279295e7-ebec-4071-bee2-7fe10fa27776",
+              "parentUUID": "3e305183-3017-4046-b3e4-0f1a34b2e13d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return 4 when called add with numbers 4 and 0",
+              "fullTitle": "add positive scenarios for add should return 4 when called add with numbers 4 and 0",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(sumOfNumbers.add(4, 0)).to.be.equal(4);",
+              "err": {},
+              "uuid": "5d8a4984-addd-47dd-b37c-86bd5c77ac8a",
+              "parentUUID": "3e305183-3017-4046-b3e4-0f1a34b2e13d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return 9 when called add with numbers 4 and 5",
+              "fullTitle": "add positive scenarios for add should return 9 when called add with numbers 4 and 5",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(sumOfNumbers.add(4, 5)).to.be.equal(9);",
+              "err": {},
+              "uuid": "36cc14e9-37a3-4925-b504-df7a70303219",
+              "parentUUID": "3e305183-3017-4046-b3e4-0f1a34b2e13d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should throw an error if a is not of type \"Number\"",
+              "fullTitle": "add positive scenarios for add should throw an error if a is not of type \"Number\"",
+              "timedOut": false,
+              "duration": 3,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const callWithError = () => Calculator.add(bla, 5);\nexpect(callWithError).to.throw(`variable is not of type \"Number\"`);",
+              "err": {
+                "message": "AssertionError: expected [Function: callWithError] to throw error including 'variable is not of type \"Number\"' but got 'bla is not defined'",
+                "estack": "AssertionError: expected [Function: callWithError] to throw error including 'variable is not of type \"Number\"' but got 'bla is not defined'\n    at Context.<anonymous> (test\\specs\\add.spec.js:28:35)\n    at processImmediate (node:internal/timers:464:21)",
+                "diff": "- bla is not defined\n+ variable is not of type \"Number\"\n"
+              },
+              "uuid": "97e5be1d-bbf4-408b-907b-2ad48dcce8ed",
+              "parentUUID": "3e305183-3017-4046-b3e4-0f1a34b2e13d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "279295e7-ebec-4071-bee2-7fe10fa27776",
+            "5d8a4984-addd-47dd-b37c-86bd5c77ac8a",
+            "36cc14e9-37a3-4925-b504-df7a70303219"
+          ],
+          "failures": [
+            "97e5be1d-bbf4-408b-907b-2ad48dcce8ed"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 4,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "b76701ef-5550-43d1-8693-51ebf0b72ad0",
+          "title": "add positive scenarios for multiply",
+          "fullFile": "D:\\QA\\JavaScript\\WebStorm task\\epam\\Stage 2\\Unit 8 - Unit Testing Framework\\HW\\test\\specs\\multiply.spec.js",
+          "file": "\\test\\specs\\multiply.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"add positive scenarios for multiply\"",
+              "fullTitle": "add positive scenarios for multiply \"before each\" hook in \"add positive scenarios for multiply\"",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "multiplicationOfNumbers = new Calculator();",
+              "err": {},
+              "uuid": "2f080670-46fd-44ee-aeb0-79ec21264180",
+              "parentUUID": "b76701ef-5550-43d1-8693-51ebf0b72ad0",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"add positive scenarios for multiply\"",
+              "fullTitle": "add positive scenarios for multiply \"after each\" hook in \"add positive scenarios for multiply\"",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "multiplicationOfNumbers = null;",
+              "err": {},
+              "uuid": "53333eb0-24f6-484a-8abf-55f1ff9de4d7",
+              "parentUUID": "b76701ef-5550-43d1-8693-51ebf0b72ad0",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should return 24 when called multiply with numbers 4 and 6",
+              "fullTitle": "add positive scenarios for multiply should return 24 when called multiply with numbers 4 and 6",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(multiplicationOfNumbers.multiply(4, 6)).to.be.equal(24);",
+              "err": {},
+              "uuid": "dfa5bbd3-bee6-47c1-af66-f2171c9db920",
+              "parentUUID": "b76701ef-5550-43d1-8693-51ebf0b72ad0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return 26 when called multiply with numbers 4 and 6.5",
+              "fullTitle": "add positive scenarios for multiply should return 26 when called multiply with numbers 4 and 6.5",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(multiplicationOfNumbers.multiply(4, 6.5)).to.be.equal(26);",
+              "err": {},
+              "uuid": "136b3d42-8fc4-4c3f-83a4-73ec6b3fc034",
+              "parentUUID": "b76701ef-5550-43d1-8693-51ebf0b72ad0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return 0 when called multiply with numbers 4 and 0",
+              "fullTitle": "add positive scenarios for multiply should return 0 when called multiply with numbers 4 and 0",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(multiplicationOfNumbers.multiply(4, 0)).to.be.equal(0);",
+              "err": {},
+              "uuid": "daa65e6e-6354-4a85-a0b2-40b27dcd9c19",
+              "parentUUID": "b76701ef-5550-43d1-8693-51ebf0b72ad0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should throw an error if a or b is not of type \"Number\"",
+              "fullTitle": "add positive scenarios for multiply should throw an error if a or b is not of type \"Number\"",
+              "timedOut": false,
+              "duration": 0,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const callWithError = () => Calculator.add(bla, 5);\nexpect(callWithError).to.throw(`variable is not of type \"Number\"`);",
+              "err": {
+                "message": "AssertionError: expected [Function: callWithError] to throw error including 'variable is not of type \"Number\"' but got 'bla is not defined'",
+                "estack": "AssertionError: expected [Function: callWithError] to throw error including 'variable is not of type \"Number\"' but got 'bla is not defined'\n    at Context.<anonymous> (test\\specs\\multiply.spec.js:27:35)\n    at processImmediate (node:internal/timers:464:21)",
+                "diff": "- bla is not defined\n+ variable is not of type \"Number\"\n"
+              },
+              "uuid": "cdda0a2d-db35-405e-8f5a-1630b2a21aaf",
+              "parentUUID": "b76701ef-5550-43d1-8693-51ebf0b72ad0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "dfa5bbd3-bee6-47c1-af66-f2171c9db920",
+            "136b3d42-8fc4-4c3f-83a4-73ec6b3fc034",
+            "daa65e6e-6354-4a85-a0b2-40b27dcd9c19"
+          ],
+          "failures": [
+            "cdda0a2d-db35-405e-8f5a-1630b2a21aaf"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "9.1.3"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.0.1"
+    }
+  }
+}
