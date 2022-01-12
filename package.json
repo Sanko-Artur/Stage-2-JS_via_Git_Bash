@@ -1,0 +1,23 @@
+{
+  "name": "hw",
+  "version": "1.0.0",
+  "description": "My HW about unit testing via mocha",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "mocha",
+    "unit",
+    "test"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^8.6.0",
+    "eslint-config-google": "^0.14.0",
+    "mocha": "^9.1.3",
+    "mochawesome": "^7.0.1"
+  }
+}
