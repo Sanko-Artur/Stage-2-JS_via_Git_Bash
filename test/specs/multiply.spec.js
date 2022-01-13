@@ -5,25 +5,24 @@
 const Calculator = require('../../app/calculator');
 const { expect } = require('chai');
 
-describe(`add positive scenarios for multiply`, function () {
-  let multiplicationOfNumbers;
-  beforeEach(function () {
-    multiplicationOfNumbers = new Calculator();
+describe(`add positive scenarios for add`, function () {
+  const calculator = new Calculator();
+
+  const testData = [
+    { a: 4, b: 5.5, result: 22 },
+    { a: 4, b: -5.5, result: -22 },
+    { a: 4, b: 0, result: 0 },
+  ];
+
+  testData.forEach(({ a, b, result }) => {
+    it(`should return ${result} when called add with numbers ${a} and ${b}`, function () {
+      expect(calculator.multiply(a, b)).to.be.equal(result);
+    });
   });
-  afterEach(function () {
-    multiplicationOfNumbers = null;
-  });
-  it(`should return 24 when called multiply with numbers 4 and 6`, function () {
-    expect(multiplicationOfNumbers.multiply(4, 6)).to.be.equal(24);
-  });
-  it(`should return 26 when called multiply with numbers 4 and 6.5`, function () {
-    expect(multiplicationOfNumbers.multiply(4, 6.5)).to.be.equal(26);
-  });
-  it(`should return 0 when called multiply with numbers 4 and 0`, function () {
-    expect(multiplicationOfNumbers.multiply(4, 0)).to.be.equal(0);
-  });
+
   it(`should throw an error if a or b is not of type "Number"`, function () {
-    const callWithError = () => Calculator.add(bla, 5);
+    const str = 'some value';
+    const callWithError = () => calculator.multiply(str, 5);
     expect(callWithError).to.throw(`variable is not of type "Number"`);
   });
 });
