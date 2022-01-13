@@ -5,7 +5,7 @@
 const Calculator = require('../../app/calculator');
 const { expect } = require('chai');
 
-describe('add positive scenarios for add', function () {
+describe('add positive scenarios for multiply', function () {
   const calculator = new Calculator();
 
   const testData = [
@@ -15,7 +15,7 @@ describe('add positive scenarios for add', function () {
   ];
 
   testData.forEach(({ a, b, result }) => {
-    it(`should return ${result} when called add with numbers ${a} and ${b}`, function () {
+    it(`should return ${result} when called multiply with numbers ${a} and ${b}`, function () {
       expect(calculator.multiply(a, b)).to.be.equal(result);
     });
   });
