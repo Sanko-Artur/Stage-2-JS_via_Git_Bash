@@ -23,7 +23,7 @@ describe(`add positive scenarios for add`, function () {
   it(`should return 9 when called add with numbers 4 and 5`, function () {
     expect(sumOfNumbers.add(4, 5)).to.be.equal(9);
   });
-  it(`should throw an error if a is not of type "Number"`, function () {
+  it(`should throw an error if a or b is not of type "Number"`, function () {
     const callWithError = () => Calculator.add(bla, 5);
     expect(callWithError).to.throw(`variable is not of type "Number"`);
   });
