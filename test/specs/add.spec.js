@@ -7,7 +7,7 @@
 const Calculator = require('../../app/calculator');
 const { expect } = require('chai');
 
-describe(`add positive scenarios for add`, function () {
+describe('add positive scenarios for add', function () {
   const calculator = new Calculator();
 
   const testData = [
@@ -22,9 +22,9 @@ describe(`add positive scenarios for add`, function () {
     });
   });
 
-  it(`should throw an error if a or b is not of type "Number"`, function () {
+  it('should throw an error if a or b is not of type "Number"', function () {
     const str = 'some value';
     const callWithError = () => calculator.add(str, 5);
-    expect(callWithError).to.throw(`variable is not of type "Number"`);
+    expect(callWithError).to.throw('variable is not of type "Number"');
   });
 });
