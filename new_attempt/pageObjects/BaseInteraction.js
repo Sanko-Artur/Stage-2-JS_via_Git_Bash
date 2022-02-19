@@ -44,7 +44,7 @@ class BaseInterection {
       .perform();
   }
 
-  async changeTabToprevious() {
+  async changeTabToPrevious() {
     await driver
       .actions()
       .keyDown(Key.CONTROL + Key.SHIFT + Key.TAB)

@@ -9,8 +9,8 @@ class PastebinInteraction extends BaseInteraction {
     this.newPaste = By.id('postform-text');
     this.syntaxHighlighting = By.id('select2-postform-format-container');
     this.inputSyntaxHighlightingBash = By.xpath(
-      '//input[@class="select2-search__field"] '
-    ); //new xpath
+      '//span[@class="select2-search select2-search--dropdown"]/child::input[@class="select2-search__field"]'
+    );
     this.dropDownPasteExpiration = By.id(
       'select2-postform-expiration-container'
     );

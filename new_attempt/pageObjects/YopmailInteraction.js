@@ -3,16 +3,24 @@ const BaseInteraction = require('./BaseInteraction');
 
 class YopmailInteraction extends BaseInteraction {
   constructor(driver) {
+    super(driver);
     this.url = 'https://yopmail.com/';
+
     this.newMail = By.xpath(
       '//div[@id="listeliens"]/child::a[@href="email-generator"]'
     );
     this.buttonForCopyMail = By.xpath('//button[@id="cprnd"]');
-    this.buttonForCheckMail = By.xpath(
-      '/html/body/div/div[2]/main/div/div[2]/div/div/div[2]/button[2]'
-    );
+    this.buttonForCheckMail = By.xpath('//button[@onclick="egengo();"]');
+  }
+
+  // 9. В новой вкладке открыть https://yopmail.com/ или аналогичный сервис для генерации временных email'ов
+  async openURL() {
+    await super.openURL(this.url);
   }
   // iframe
+  // async switchFrame() {
+  //   await super.accessToFrame();
+  // }
 
   async createNewMail() {
     this.selectElement(this.newMail);

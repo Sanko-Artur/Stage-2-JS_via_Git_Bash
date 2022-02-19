@@ -1,6 +1,5 @@
 const { By } = require('selenium-webdriver');
 const BaseInteraction = require('./BaseInteraction');
-const BaseInteraction = require('./YopmailInteraction');
 
 class CalculatorInteraction extends BaseInteraction {
   constructor(driver) {
@@ -15,7 +14,7 @@ class CalculatorInteraction extends BaseInteraction {
     this.url = 'https://cloud.google.com/';
     this.searchButton = By.xpath('//input[@name="q"]');
     this.searchResult = By.xpath(
-      '//b[text()="Google Cloud Pricing Calculator"][1]'
+      '//b[text()="Google Cloud Pricing Calculator"][1]' // не работает [1] - какие есть еще варианты?
     );
     this.frame_1 = By.xpath(
       '//iframe[@id="apiproxybf221f87683c831e9bba1607f3c31f5cae7a3c6f0.3731985532"]'
@@ -25,30 +24,40 @@ class CalculatorInteraction extends BaseInteraction {
     );
     this.typeOFCalculator = By.xpath('//div[@title="Compute Engine"][1]');
     this.numberOfInstances = By.xpath('//input[@id="input_76"]');
-    this.series = By.xpath('//*[@id="select_value_label_71"]/span[1]/div'); // new xpath
-    this.typeOfSeries = By.xpath('//*[@id="select_option_216"]/div'); // new xpath
+    this.series = By.xpath(
+      '//*[@id="select_value_label_73"]/child::span/child::div'
+    );
+    this.typeOfSeries = By.xpath('//*[@id="select_option_216"]/div'); // //div[@class='md-text ng-binding'][text()='N1'] - не находит
     this.machineType_1 = By.xpath(
-      '//*[@id="select_value_label_72"]/span[1]/div'
-    ); // new xpath
-    this.machineType_2 = By.xpath('//*[@id="select_option_419"]/div'); // new xpath
+      '//*[@id="select_value_label_74"]/child::span/child::div'
+    );
+    this.machineType_2 = By.xpath('//*[@id="select_option_421"]/child::div');
     this.addGpus = By.xpath(
       '//*[@id="mainForm"]/div[2]/div/md-card/md-card-content/div/div[1]/form/div[11]/div[1]/md-input-container/md-checkbox/div[2]'
-    ); // new xpath
+    ); // //div[@class='md-label'][text()='Add GPUs.'] - не находит
     this.gpuType_1 = By.xpath('//*[@id="select_462"]');
-    this.gpuType_2 = By.xpath('//*[@id="select_option_469"]/div'); // new xpath
-    this.numberOfGpus_1 = By.xpath('//*[@id="select_value_label_451"]/span[1]'); // new xpath
-    this.numberOfGpus_2 = By.xpath('//*[@id="select_option_473"]');
-    this.localSsd_1 = By.xpath('//*[@id="select_value_label_413"]/span[1]'); // new xpath
-    this.localSsd_2 = By.xpath('//*[@id="select_option_440"]/div'); // new xpath
+    this.gpuType_2 = By.xpath('//*[@id="select_option_491"]/child::div');
+    this.numberOfGpus_1 = By.xpath(
+      '//*[@id="select_value_label_453"]/child::span/child::div'
+    );
+    this.numberOfGpus_2 = By.xpath('//*[@id="select_option_495"]/child::div');
+    this.localSsd_1 = By.xpath(
+      '//*[@id="select_value_label_415"]/child::span/child::div'
+    );
+    this.localSsd_2 = By.xpath('//*[@id="select_option_442"]/child::div');
     this.datacenterLocation_1 = By.xpath(
-      '//*[@id="select_value_label_74"]/span[1]/div'
-    ); // new xpath
-    this.datacenterLocation_2 = By.xpath('//*[@id="select_option_237"]/div'); // new xpath
-    this.commitedUsage_1 = By.xpath('//*[@id="select_value_label_75"]/span[1]'); // new xpath
-    this.commitedUsage_2 = By.xpath('//*[@id="select_option_114"]/div'); // new xpath
+      '//*[@id="select_value_label_76"]/child::span/child::div'
+    );
+    this.datacenterLocation_2 = By.xpath(
+      '//*[@id="select_option_239"]/child::div'
+    );
+    this.commitedUsage_1 = By.xpath(
+      '//*[@id="select_value_label_77"]/child::span/child::div'
+    );
+    this.commitedUsage_2 = By.xpath('//*[@id="select_option_116"]/child::div');
     this.buttonAdd = By.xpath(
-      '//*[@id="mainForm"]/div[2]/div/md-card/md-card-content/div/div[1]/form/div[19]/button'
-    ); // new xpath
+      '//button[@type="button"][@class="md-raised md-primary cpc-button md-button md-ink-ripple"][1]'
+    ); // //button[@type="button"][text()="Add to Estimate"] - не находит
     this.buttonEmailEstimate = By.id('email_quote');
     this.textSearchRequest = 'Google Cloud Platform Pricing Calculator';
     this.textForInstaces = '4';
@@ -155,22 +164,15 @@ class CalculatorInteraction extends BaseInteraction {
     super.openNewTab();
   }
 
-  async openNewURL() {
-    this.openURL(this.url_2);
-  }
+  // async openNewURL() {
+  //   this.openURL(this.url_2);
+  // }
 
   // 10. Скопировать почтовый адрес сгенерированный в yopmail.com
-  async createNewMail() {
-    super.createNewMail();
-  }
-
-  async copyMail() {
-    super.copyMail();
-  }
 
   // 11. Вернуться в калькулятор, в поле Email ввести адрес из предыдущего пункта
-  async changeTabToprevious() {
-    super.changeTabToprevious();
+  async changeTabToPrevious() {
+    super.changeTabToPrevious();
   }
 
   async selectInputFieldForMail() {
@@ -190,10 +192,6 @@ class CalculatorInteraction extends BaseInteraction {
   // что отображается в калькуляторе
   async changeTabToNext() {
     super.changeTabToNext();
-  }
-
-  async clickButtonForCheckMail() {
-    super.clickButtonForCheckMail();
   }
 }
 
