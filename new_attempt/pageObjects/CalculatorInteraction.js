@@ -11,6 +11,12 @@ class CalculatorInteraction extends BaseInteraction {
       )
     );
 
+    // By.xpath(//*[@id="cloud-site"]/devsite-iframe/iframe)
+    // By.xpath(/html/body/devsite-analytics/iframe)
+    // By.xpath(//iframe[@id="apiproxy99024582d049f724b3fed3c37ab187530bb4875b0.2168949"])
+    // By.xpath(//iframe[@id="apiproxybf221f87683c831e9bba1607f3c31f5cae7a3c6f0.994715646"])
+    // By.xpath(//iframe[@id="myFrame"])
+
     this.url = 'https://cloud.google.com/';
     this.searchButton = By.xpath('//input[@name="q"]');
     this.searchResult = By.xpath(
@@ -150,12 +156,12 @@ class CalculatorInteraction extends BaseInteraction {
   }
 
   // 7. Нажать Add to Estimate
-  async clickOnTheButtonAddToEstimate() {
+  async clickButtonAddToEstimate() {
     this.selectElement(this.buttonAdd);
   }
 
   // 8. Выбрать пункт EMAIL ESTIMATE
-  async clickOnButtonEmailEstimate() {
+  async clickButtonEmailEstimate() {
     this.selectElement(this.buttonEmailEstimate);
   }
 
@@ -184,7 +190,7 @@ class CalculatorInteraction extends BaseInteraction {
   }
 
   // 12. Нажать SEND EMAIL
-  async clickOnButtonSendEmail() {
+  async clickButtonSendEmail() {
     this.selectElement(this.buttonSendEmail);
   }
 

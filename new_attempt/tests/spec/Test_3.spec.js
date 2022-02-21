@@ -4,33 +4,42 @@ const { By } = require('selenium-webdriver');
 
 describe('Test for task "Hurt Me Plenty"', function () {
   const textSearchRequest = 'Google Cloud Platform Pricing Calculator';
-  const textForInstaces = '4';
-  const textForInstaces_2 = By.xpath('//span[text()="4"]');
 
-  const a = By.xpath('//div[text()="Compute Engine"]');
-  const a_1 = 'Compute Engine';
-  const b = By.xpath(
-    '//div[text()="Operating System / Software:"]/span[text()="Free"]'
-  );
-  const b_1 = 'Operating System / Software: Free';
-  const c = By.xpath('//div[text()="VM class: regular"]');
-  const c_1 = 'VM class: regular';
-  const d = By.xpath('//div[text()="Instance type: n1-standard-8"]');
-  const d_1 = 'Instance type: n1-standard-8';
+  const textForInstaces_a = '4';
+  const contentForInstaces_b = '[class="ng-binding ng-scope"]'; //document.querySelector('[class="ng-binding ng-scope"]').textContent;
+
+  const typeOfCalcolator_a = By.xpath('//span[text()="Compute Engine"]');
+  const typeOfCalcolator_b = 'Compute Engine';
+
+  const operatingSystemb_a = '[class="md-list-item-text flex"]'; //document.querySelector('[class="md-list-item-text flex"]').textContent;
+  const operatingSystemb_b = 'Operating System / Software: Free';
+
+  const vmClass_a = By.xpath('//div[text()="VM class: regular"]'); //[class="md-list-item-text ng-binding"][4]
+  const vmClass_b = 'VM class: regular';
+
+  const instanceType_a = `[ng-class="item.items.sustainedUse || item.items.isInstanceCommitted ? 'cpc-cart-multiline' : ''"]`; //document.querySelector(`[ng-class="item.items.sustainedUse || item.items.isInstanceCommitted ? 'cpc-cart-multiline' : ''"]`).textContent;
+  const instanceType_b = 'Instance type: n1-standard-8';
+
   // const ? = By.xpath('//*[text()="Number of GPUs: 1"]');
   // const ?_1 = 'Number of GPUs: 1'
   // const ? = By.xpath('//*[text()="GPU type: NVIDIA Tesla V100"]');
   // const ?_1 = 'GPU type: NVIDIA Tesla V100'
-  const e = By.xpath('//div[text()="GPU dies: 1 NVIDIA Tesla V100"]');
-  const e_1 = 'GPU dies: 1 NVIDIA Tesla V100';
-  const f = By.xpath('//div[text()="Local SSD: 2x375 GiB"]');
-  const f_1 = 'Local SSD: 2x375 GiB';
-  const g = By.xpath('//div[text()="Region: Frankfurt"]');
-  const g_1 = 'Region: Frankfurt';
-  const h = By.xpath('//div[text()="Commitment term: 1 Year"]');
-  const h_1 = 'Commitment term: 1 Year';
+  const gpu_a = `[ng-class="item.items.sustainedUse || item.items.isGpuCommitted ? 'cpc-cart-multiline' : ''"]`; //document.querySelector(`[ng-class="item.items.sustainedUse || item.items.isGpuCommitted ? 'cpc-cart-multiline' : ''"]`).textContent;
+  const gpu_b = 'GPU dies: 1 NVIDIA Tesla V100';
 
-  const sumOfRent = '';
+  const localSSD_a = `[ng-class="item.items.isSsdCommitted ? 'cpc-cart-multiline' : ''"]`; //document.querySelector(`[ng-class="item.items.isSsdCommitted ? 'cpc-cart-multiline' : ''"]`).textContent;
+  const localSSD_b = 'Local SSD: 2x375 GiB';
+
+  const region_a = By.xpath('//div[text()="Region: Frankfurt"]'); //[class="md-list-item-text ng-binding"][1]
+  const region_b = 'Region: Frankfurt';
+
+  const commitmentTerm_a = By.xpath('//div[text()="Commitment term: 1 Year"]'); //[class="md-list-item-text ng-binding"][3]
+  const commitmentTerm_b = 'Commitment term: 1 Year';
+
+  const sumOfRentAuto = By.xpath(
+    '//h2[@class="md-title"]/child::b[@class="ng-binding"]'
+  ); //
+  const sumOfRentByHand = 'USD 2,277.05 per 1 month';
   // const calculator = new CalculatorInteraction();
 
   // для каждого it нужно ли предоставлять доступ к frame
@@ -41,48 +50,63 @@ describe('Test for task "Hurt Me Plenty"', function () {
     await calculator.chooseSearchResult();
     await calculator.switchFrame();
     await calculator.chooseTypeOfCalculator();
-    await calculator.setNumberOfInstances(textForInstaces);
+    await calculator.setNumberOfInstances(textForInstaces_a);
     await calculator.setSeries();
     await calculator.setInstancType();
     await calculator.setGPUs();
     await calculator.setSSD();
     await calculator.setDatacenterLocation();
     await calculator.setCommitedUsage();
-    await calculator.clickOnTheButtonAddToEstimate();
+    await calculator.clickButtonAddToEstimate();
   });
 
+  // 8. Проверить соответствие данных следующих полей: VM Class, Instance type, Region, local SSD, commitment term
+  // 9. Проверить что сумма аренды в месяц совпадает с суммой получаемой при ручном прохождении теста.
+
   it('type of calcolator should be "Compute Engine"', async function () {
-    expect(a).to.be.equal(a_1);
+    expect(calculator.getTextFromElement()).to.be.equal(typeOfCalcolator_b);
   });
 
   it('"Number of instances" should contain "4"', async function () {
-    expect(textForInstaces_2).to.be.equal(textForInstaces);
+    expect(calculator.getTextFromElement(contentForInstaces_b)).to.be.equal(
+      textForInstaces_a
+    );
   });
 
   it('"Operating System / Software" should contain "Free"', async function () {
-    expect(b).to.be.equal(b_1);
+    expect(calculator.getTextFromElement(operatingSystemb_a)).to.be.equal(
+      operatingSystemb_b
+    );
   });
 
   it('"VM Class" should contain "Regular"', async function () {
-    expect(c).to.be.equal(c_1);
+    expect(calculator.getTextFromElement(vmClass_a)).to.be.equal(vmClass_b);
   });
 
   it('"Instance type" should contain "n1-standard-8"', async function () {
-    expect(d).to.be.equal(d_1);
+    expect(calculator.getTextFromElement(instanceType_a)).to.be.equal(
+      instanceType_b
+    );
   });
 
   it('"GPU dies" should contain "1 NVIDIA Tesla V100"', async function () {
-    expect(e).to.be.equal(e_1);
+    expect(calculator.getTextFromElement(gpu_a)).to.be.equal(gpu_b);
   });
 
   it('"Local SSD" should contain "2x375 GiB"', async function () {
-    expect(f).to.be.equal(f_1);
+    expect(calculator.getTextFromElement(localSSD_a)).to.be.equal(localSSD_b);
   });
+
   it('"Region" should contain "Frankfurt"', async function () {
     expect(g).to.be.equal(g_1);
   });
+
   it('"Commited usage" should contain "1 Year"', async function () {
     expect(h).to.be.equal(h_1);
+  });
+
+  it('"Total Estimated Cost" should equal "sumOfRentByHand"', async function () {
+    expect(sumOfRentAuto).to.be.equal(sumOfRentByHand);
   });
 
   after(async function () {

@@ -4,7 +4,7 @@ const BaseInteraction = require('./BaseInteraction');
 class PastebinInteraction extends BaseInteraction {
   constructor(driver) {
     super(driver);
-    this.theURL = 'https://pastebin.com/';
+    this.URL = 'https://pastebin.com/';
 
     this.newPaste = By.id('postform-text');
     this.syntaxHighlighting = By.id('select2-postform-format-container');
@@ -20,7 +20,7 @@ class PastebinInteraction extends BaseInteraction {
   }
   // 1. Открыть https://pastebin.com или аналогичный сервис в любом браузере
   async openURL() {
-    await super.openURL(this.theURL);
+    await super.openURL(this.URL);
   }
   // 2. Создать New Paste со следующими деталями:
   // * Код: "Hello from WebDriver"

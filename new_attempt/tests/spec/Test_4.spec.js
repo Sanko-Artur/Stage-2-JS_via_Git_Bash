@@ -50,8 +50,8 @@ describe('Test for task "Hardcore"', function () {
     await calculator.setSSD();
     await calculator.setDatacenterLocation();
     await calculator.setCommitedUsage();
-    await calculator.clickOnTheButtonAddToEstimate();
-    await calculator.clickOnButtonEmailEstimate();
+    await calculator.clickButtonAddToEstimate();
+    await calculator.clickButtonEmailEstimate();
     await calculator.openNewTab();
     await yopmail.openURL();
     await yopmail.createNewMail();
@@ -59,7 +59,7 @@ describe('Test for task "Hardcore"', function () {
     await calculator.changeTabToPrevious();
     await calculator.selectInputFieldForMail();
     await calculator.inputMail();
-    await calculator.clickOnButtonSendEmail();
+    await calculator.clickButtonSendEmail();
     await calculator.changeTabToNext();
     await yopmail.clickButtonForCheckMail();
   });
