@@ -1,0 +1,24 @@
+{
+  "name": "hw",
+  "version": "1.0.0",
+  "description": "UI testing via selenium webdriver",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "selenium",
+    "webdriver",
+    "UI"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "selenium-webdriver": "^4.1.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.0",
+    "mochawesome": "^7.0.1"
+  }
+}
