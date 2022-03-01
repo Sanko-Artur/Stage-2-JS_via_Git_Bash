@@ -1,0 +1,127 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2022-02-28T14:38:13.154Z",
+    "end": "2022-02-28T14:38:17.185Z",
+    "duration": 4031,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 1,
+    "hasOther": true,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "452f6fb3-17ce-4ead-b2db-829f07428a47",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3c91775b-6556-44ad-80c4-7482ff3b4df3",
+          "title": "Test for task \"I Can Win\"",
+          "fullFile": "D:\\QA\\JavaScript\\WebStorm task\\epam\\Stage 2\\Unit 9 - WebDriver\\HW\\tests\\spec\\Test_1.spec.js",
+          "file": "\\tests\\spec\\Test_1.spec.js",
+          "beforeHooks": [],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook for \"have to fill few string by some value and save it\"",
+              "fullTitle": "Test for task \"I Can Win\" \"after all\" hook for \"have to fill few string by some value and save it\"",
+              "timedOut": true,
+              "duration": 2015,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await pastebin.close();",
+              "err": {
+                "message": "Error: Timeout of 2000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (D:\\QA\\JavaScript\\WebStorm task\\epam\\Stage 2\\Unit 9 - WebDriver\\HW\\tests\\spec\\Test_1.spec.js)",
+                "estack": "Error: Timeout of 2000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (D:\\QA\\JavaScript\\WebStorm task\\epam\\Stage 2\\Unit 9 - WebDriver\\HW\\tests\\spec\\Test_1.spec.js)\n    at listOnTimeout (node:internal/timers:557:17)\n    at processTimers (node:internal/timers:500:7)",
+                "diff": null
+              },
+              "uuid": "cb511305-d638-4e85-85c7-09ec8ebf2460",
+              "parentUUID": "3c91775b-6556-44ad-80c4-7482ff3b4df3",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "have to fill few string by some value and save it",
+              "fullTitle": "Test for task \"I Can Win\" have to fill few string by some value and save it",
+              "timedOut": true,
+              "duration": 2004,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await pastebin.openURL();\nawait pastebin.inputNewPaste(textNewPaste);\nawait pastebin.selectPasteExpiration();\nawait pastebin.inputPasteName(textPasteName);\nawait pastebin.clickButtonCreateNewPaste();",
+              "err": {
+                "message": "Error: Timeout of 2000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (D:\\QA\\JavaScript\\WebStorm task\\epam\\Stage 2\\Unit 9 - WebDriver\\HW\\tests\\spec\\Test_1.spec.js)",
+                "estack": "Error: Timeout of 2000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (D:\\QA\\JavaScript\\WebStorm task\\epam\\Stage 2\\Unit 9 - WebDriver\\HW\\tests\\spec\\Test_1.spec.js)\n    at listOnTimeout (node:internal/timers:557:17)\n    at processTimers (node:internal/timers:500:7)",
+                "diff": null
+              },
+              "uuid": "e3b8d11a-3fd9-484b-b7fe-64196aa6fa93",
+              "parentUUID": "3c91775b-6556-44ad-80c4-7482ff3b4df3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "e3b8d11a-3fd9-484b-b7fe-64196aa6fa93"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 2004,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "9.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.0.1"
+    }
+  }
+}
