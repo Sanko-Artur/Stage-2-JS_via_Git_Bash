@@ -1,6 +1,6 @@
 const { Builder, By, Key, until } = require('selenium-webdriver');
 let driver = new Builder().forBrowser('chrome').build();
-// driver.manage().setTimeouts().implicitlyWait(20, TimeUnit.SECONDS);
+driver.manage().setTimeouts({ implicit: 10000 });
 
 class BaseInteraction {
   constructor() {
@@ -13,20 +13,33 @@ class BaseInteraction {
   }
 
   async clickElement(element) {
-    await this.driver.findElement(element).click();
+    await (await this.driver.findElement(element)).click();
   }
 
   async inputTextIntoElement(element, text) {
-    await this.driver.findElement(element).sendKeys(text);
+    await (await this.driver.findElement(element)).sendKeys(text);
   }
 
   async close() {
     await this.driver.quit();
   }
 
-  async getTextFromElement(element) {
-    await document.querySelector(element).textContent;
+  async pressEnter() {
+    await driver.actions().keyDown(Key.ENTER).keyUp(Key.ENTER).perform();
   }
+
+  async getTextFromElement(element) {
+    return await (await this.driver.findElement(element)).getText();
+  }
+
+  async getTextFromTitle() {
+    await this.driver.wait(until.elementLocated(By.css('html')));
+    return await this.driver.getTitle();
+  }
+
+  // async getTextFromElement(element) {
+  //   await document.querySelector(element).textContent;
+  // }
 }
 
 module.exports = BaseInteraction;

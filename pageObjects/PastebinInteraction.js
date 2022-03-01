@@ -34,20 +34,25 @@ class PastebinInteraction extends BaseInteraction {
     await this.inputTextIntoElement(this.newPaste, text);
     await this.driver.sleep(500);
   }
+
   // * select Syntax Highlighting and choose "Bash"
-  async selectSyntaxHighlighting(text) {
+  async setSyntaxHighlighting(text) {
     await this.clickElement(this.syntaxHighlighting);
     await this.driver.sleep(500);
     await this.inputTextIntoElement(this.inputSyntaxHighlightingBash, text);
     await this.driver.sleep(500);
+    await this.pressEnter();
+    await this.driver.sleep(500);
   }
+
   // * Paste Expiration: "10 Minutes"
-  async selectPasteExpiration() {
+  async setPasteExpiration() {
     await this.clickElement(this.dropDownPasteExpiration);
     await this.driver.sleep(500);
     await this.clickElement(this.tenMinutes);
     await this.driver.sleep(500);
   }
+
   // * Paste Name / Title: "helloweb"
   // or
   // * Paste Name / Title: "how to gain dominance among developers"
@@ -56,8 +61,33 @@ class PastebinInteraction extends BaseInteraction {
     await this.driver.sleep(500);
   }
 
+  // 3. Сохранить paste
   async clickButtonCreateNewPaste() {
     await this.clickElement(this.button);
+    await this.driver.sleep(500);
+  }
+
+  // * Проверить что код соответствует введенному в пункте 2
+  async getTextFromNewPaste(element) {
+    await this.getTextFromElement(element);
+    await this.driver.sleep(500);
+  }
+
+  // * Синтаксис подвечен для bash
+  async getTextFromSyntaxHighlighting(element) {
+    await this.getTextFromElement(element);
+    await this.driver.sleep(500);
+  }
+
+  // * Проверить что код соответствует введенному в пункте 2
+  async getTextFromPasteExpiration(element) {
+    await this.getTextFromElement(element);
+    await this.driver.sleep(500);
+  }
+
+  // * Заголовок страницы браузера соответствует Paste Name / Title
+  async getTextFromTitle() {
+    await super.getTextFromTitle();
     await this.driver.sleep(500);
   }
 }
