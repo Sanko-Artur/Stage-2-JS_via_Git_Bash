@@ -23,13 +23,7 @@ class PastebinInteraction extends BaseInteraction {
     await super.openURL(this.URL);
     await this.driver.sleep(500);
   }
-  // 2. Создать New Paste со следующими деталями:
-  // * Код: "Hello from WebDriver"
-  // or
-  // * Код:
-  // git config --global user.name  "New Sheriff in Town"
-  // git reset $(git commit-tree HEAD^{tree} -m "Legacy code")
-  // git push origin master --force
+  // 2. Создать New Paste
   async inputNewPaste(text) {
     await this.inputTextIntoElement(this.newPaste, text);
     await this.driver.sleep(500);
@@ -53,9 +47,7 @@ class PastebinInteraction extends BaseInteraction {
     await this.driver.sleep(500);
   }
 
-  // * Paste Name / Title: "helloweb"
-  // or
-  // * Paste Name / Title: "how to gain dominance among developers"
+  // * Paste Name / Title:
   async inputPasteName(text) {
     await this.inputTextIntoElement(this.pasteName, text);
     await this.driver.sleep(500);
@@ -69,14 +61,14 @@ class PastebinInteraction extends BaseInteraction {
 
   // * Проверить что код соответствует введенному в пункте 2
   async getTextFromNewPaste(element) {
+    await this.driver.sleep(2000);
     await this.getTextFromElement(element);
-    await this.driver.sleep(500);
   }
 
   // * Синтаксис подвечен для bash
   async getTextFromSyntaxHighlighting(element) {
+    await this.driver.sleep(2000);
     await this.getTextFromElement(element);
-    await this.driver.sleep(500);
   }
 
   // * Проверить что код соответствует введенному в пункте 2

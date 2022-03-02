@@ -33,13 +33,10 @@ class BaseInteraction {
   }
 
   async getTextFromTitle() {
-    await this.driver.wait(until.elementLocated(By.css('html')));
-    return await this.driver.getTitle();
+    return await (
+      await this.driver.wait(until.elementLocated(By.css('html')))
+    ).getTitle();
   }
-
-  // async getTextFromElement(element) {
-  //   await document.querySelector(element).textContent;
-  // }
 }
 
 module.exports = BaseInteraction;
