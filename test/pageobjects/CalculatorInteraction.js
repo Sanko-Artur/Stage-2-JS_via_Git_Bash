@@ -4,211 +4,241 @@ class CalculatorInteraction extends BaseInteraction {
   constructor() {
     super();
 
-    // this.iframe = await driver.findElement(
-    //   By.xpath(
-    //     '//iframe[@id="apiproxybf221f87683c831e9bba1607f3c31f5cae7a3c6f0.3731985532"]'
-    //   )
-    // );
-
-    // By.xpath(//*[@id="cloud-site"]/devsite-iframe/iframe)
-    // By.xpath(/html/body/devsite-analytics/iframe)
-    // By.xpath(//iframe[@id="apiproxy99024582d049f724b3fed3c37ab187530bb4875b0.2168949"])
-    // By.xpath(//iframe[@id="apiproxybf221f87683c831e9bba1607f3c31f5cae7a3c6f0.994715646"])
-    // By.xpath(//iframe[@id="myFrame"])
-
     this.url = 'https://cloud.google.com/';
 
     this.searchButton = '[name="q"]';
 
-    this.searchResult = '//b[text()="Google Cloud Pricing Calculator"]'; // не работает [1] - какие есть еще варианты?
+    this.searchResult = '//b[text()="Google Cloud Pricing Calculator"]';
 
-    // this.frame_1 = By.xpath(
-    //   '//iframe[@id="apiproxybf221f87683c831e9bba1607f3c31f5cae7a3c6f0.3731985532"]'
-    // );
-    // this.frame_2 = By.xpath(
-    //   '//iframe[@id="apiproxy1e6529cf69db7e05469dc4744974bc80422fd7bc0.1841053624"]'
-    // );
+    this.typeOFCalculator =
+      "//md-tab-item[@class='md-tab ng-scope ng-isolate-scope md-ink-ripple md-active']/child::div[@title='Compute Engine']";
 
-    // this.typeOFCalculator = By.xpath('//div[@title="Compute Engine"][1]');
+    this.numberOfInstances = '#input_80';
 
-    // this.idFrame =
-    //   '//article[@id="cloud-site"]/child::devsite-iframe/child::iframe';
+    this.instances = '#input_81';
 
-    this.idFrame = 'iframe[1]';
+    this.operatingSystemDropDown = '#select_value_label_72';
+    this.operatingSystem = "//md-option[@id='select_option_82']//child::div";
 
-    this.numberOfInstances = '//input[@id="input_79"]';
-    // this.series = By.xpath(
-    //   '//*[@id="select_value_label_73"]/child::span/child::div'
-    // );
-    // this.typeOfSeries = By.xpath('//*[@id="select_option_216"]/div'); // //div[@class='md-text ng-binding'][text()='N1'] - не находит
-    // this.machineType_1 = By.xpath(
-    //   '//*[@id="select_value_label_74"]/child::span/child::div'
-    // );
-    // this.machineType_2 = By.xpath('//*[@id="select_option_421"]/child::div');
-    // this.addGpus = By.xpath(
-    //   '//*[@id="mainForm"]/div[2]/div/md-card/md-card-content/div/div[1]/form/div[11]/div[1]/md-input-container/md-checkbox/div[2]'
-    // ); // //div[@class='md-label'][text()='Add GPUs.'] - не находит
-    // this.gpuType_1 = By.xpath('//*[@id="select_462"]');
-    // this.gpuType_2 = By.xpath('//*[@id="select_option_491"]/child::div');
-    // this.numberOfGpus_1 = By.xpath(
-    //   '//*[@id="select_value_label_453"]/child::span/child::div'
-    // );
-    // this.numberOfGpus_2 = By.xpath('//*[@id="select_option_495"]/child::div');
-    // this.localSsd_1 = By.xpath(
-    //   '//*[@id="select_value_label_415"]/child::span/child::div'
-    // );
-    // this.localSsd_2 = By.xpath('//*[@id="select_option_442"]/child::div');
-    // this.datacenterLocation_1 = By.xpath(
-    //   '//*[@id="select_value_label_76"]/child::span/child::div'
-    // );
-    // this.datacenterLocation_2 = By.xpath(
-    //   '//*[@id="select_option_239"]/child::div'
-    // );
-    // this.commitedUsage_1 = By.xpath(
-    //   '//*[@id="select_value_label_77"]/child::span/child::div'
-    // );
-    // this.commitedUsage_2 = By.xpath('//*[@id="select_option_116"]/child::div');
-    // this.buttonAdd = By.xpath(
-    //   '//button[@type="button"][@class="md-raised md-primary cpc-button md-button md-ink-ripple"][1]'
-    // ); // //button[@type="button"][text()="Add to Estimate"] - не находит
-    // this.buttonEmailEstimate = By.id('email_quote');
-    // this.textSearchRequest = 'Google Cloud Platform Pricing Calculator';
-    // this.textForInstaces = '4';
-    // this.url_2 = 'https://yopmail.com/';
-    // this.fieldForMail = By.id('input_539');
-    // this.buttonSendEmail = By.xpath(
-    //   '//*[@id="dialogContent_545"]/form/md-dialog-actions/button[2]'
-    // );
+    this.vmClassDropDown = '#select_value_label_73';
+    this.vmClass = "//md-option[@id='select_option_95']/child::div";
+
+    this.seriesDropDown = '//md-select-value[@id="select_value_label_75"]';
+    this.typeOfSeries =
+      '//md-option[@id="select_option_220"]/child::div[@class="md-text ng-binding"]';
+
+    this.machineTypeDropDown = '//*[@id="select_value_label_76"]';
+    this.machineType =
+      '//*[@id="select_option_423"]/child::div[@class="md-text ng-binding"]';
+
+    this.checkBoxAddGpus =
+      "//*[@aria-label='Add GPUs']/child::div[@class='md-label']";
+    this.gpuTypeDropDown = '#select_456';
+    this.gpuType = "//*[@id='select_option_463']/child::div";
+    this.numberOfGpusDropDown = '#select_value_label_455';
+    this.numberOfGpus =
+      "//md-option[@id='select_option_467']/child::div[@class='md-text ng-binding']";
+
+    this.localSsdDropDown = '#select_value_label_417';
+    this.localSsd = "//md-option[@id='select_option_444']/child::div";
+
+    this.datacenterLocationDropDown = '#select_value_label_78';
+    this.datacenterLocation = "//md-option[@id='select_option_241']/child::div";
+
+    this.commitedUsageDropDown = '#select_value_label_79';
+    this.commitedUsage = "//md-option[@id='select_option_118']/child::div";
+
+    this.buttonAddToEstimate =
+      "//div[@class='layout-align-end-start layout-row']/child::button[@aria-label='Add to Estimate']";
+
+    this.checkFieldVMClass =
+      "//md-list-item[@ng-if='item.items.editHook && item.items.editHook.initialInputs.class']/child::div[@class='md-list-item-text ng-binding']";
+
+    this.buttonEmailEstimate = "//button[@id='email_quote']";
+
+    this.yopmail = 'https://yopmail.com/';
+
+    this.generatorEmail =
+      "//div[@id='listeliens']/child::a[@href='email-generator']";
+    this.fieldWithEmail = '#egen';
+    this.copyNewEmail = '#cprnd';
+    this.titleOfCalculator = 'Google Cloud Pricing Calculator';
+    this.inputForEmail =
+      "//md-input-container[@class='flex md-input-invalid']/child::input[@id='input_542']";
+
+    this.buttonSendEmail = '//button[@aria-label="Send Email"]';
+
+    this.urlYopMail = 'https://yopmail.com/ru/email-generator';
+    this.buttonCheckEmail = "//button[@onclick='egengo();']";
+    this.choosePost = "//div[@class='mctn']/div[@class='m']"; // //div[@class='mctn']/div[2]
   }
   // 1. Открыть https://cloud.google.com/
-  openURL() {
-    return super.openURL(this.url);
+  async openURL() {
+    await super.openURL(this.url);
   }
-  // 2. Нажав кнопку поиска по порталу вверху страницы, ввести в поле поиска"Google Cloud Platform Pricing Calculator"
-  //   async сlickSearchField() {
-  //     await this.selectElement(this.searchButton);
-  //   }
 
+  // 2. Нажав кнопку поиска по порталу вверху страницы, ввести в поле поиска"Google Cloud Platform Pricing Calculator"
   async setSearchItem(text) {
-    await this.inputTextIntoElement(this.searchButton, text); // this.textSearchRequest
+    await this.inputTextIntoElement(this.searchButton, text);
   }
 
   // 3. Запустить поиск, нажав кнопку поиска.
   async startSearching() {
     await this.pressEnter();
   }
+
   // 4. В результатах поиска кликнуть "Google Cloud Platform Pricing Calculator" и перейти на страницу калькулятора.
   async chooseSearchResult() {
     await this.clickElement(this.searchResult);
   }
 
-  switchFrame() {
-    return super.switchFrame(this.idFrame);
+  async switchFrame() {
+    await super.switchFrame();
   }
 
-  //   // 5. Активировать раздел COMPUTE ENGINE вверху страницы
-  //   async chooseTypeOfCalculator() {
-  //     await this.selectElement(this.typeOFCalculator);
-  //   }
+  // 5. Активировать раздел COMPUTE ENGINE вверху страницы
+  async chooseTypeOfCalculator() {
+    await this.waitForLoadingExtraElemenOfDOM(this.typeOFCalculator);
+    await this.clickElement(this.typeOFCalculator);
+  }
 
-  //   // 6. Заполнить форму следующими данными:
-  //   //  * Number of instances: 4
+  // 6. Заполнить форму следующими данными:
+  //  * Number of instances: 4
   async setNumberOfInstances(text) {
-    // this.clickElement(this.numberOfInstances);
-    await this.inputTextIntoElement(this.numberOfInstances, text); // this.textForInstaces
+    await this.inputTextIntoElement(this.numberOfInstances, text);
   }
 
-  //   //       ???  нужно ли эти пункты прокликивать, если они по дэфолту уже выбраны  ???
-  //   // * What are these instances for?: оставить пустым
-  //   //  * Operating System / Software: Free: Debian, CentOS, CoreOS, Ubuntu, or other User Provided OS
-  //   //  * VM Class: Regular
+  // * What are these instances for?: оставить пустым
+  async clearInstancesField() {
+    await this.clearElement(this.instances);
+  }
 
-  //   // set series
-  //   async setSeries() {
-  //     this.selectElement(this.series);
-  //     this.selectElement(this.typeOfSeries);
-  //   }
+  //  * Operating System / Software: Free: Debian, CentOS, CoreOS, Ubuntu, or other User Provided OS
+  async setOperatingSystem() {
+    await this.waitForLoadingExtraElemenOfDOM(this.operatingSystemDropDown);
+    await this.clickElement(this.operatingSystemDropDown);
+    await this.waitForLoadingExtraElemenOfDOM(this.operatingSystem);
+    await this.clickElement(this.operatingSystem);
+  }
 
-  //   // Instance type: n1-standard-8    (vCPUs: 8, RAM: 30 GB)
-  //   async setInstancType() {
-  //     this.selectElement(this.machineType_1);
-  //     this.selectElement(this.machineType_2);
-  //   }
+  //  * VM Class: Regular
+  async setVMClass() {
+    await this.waitForLoadingExtraElemenOfDOM(this.vmClassDropDown);
+    await this.clickElement(this.vmClassDropDown);
+    await this.waitForLoadingExtraElemenOfDOM(this.vmClass);
+    await this.clickElement(this.vmClass);
+  }
 
-  //   //Выбрать Add GPUs
-  //   // * Number of GPUs: 1
-  //   // * GPU type: NVIDIA Tesla V100
-  //   // не всегда доступно к выбору -> NVIDIA Tesla V100
-  //   async setGPUs() {
-  //     this.selectElement(this.addGpus);
-  //     this.selectElement(this.gpuType_1);
-  //     this.selectElement(this.gpuType_2);
-  //     this.selectElement(this.numberOfGpus_1);
-  //     this.selectElement(this.numberOfGpus_2);
-  //   }
+  // set series
+  async setSeries() {
+    await this.waitForLoadingExtraElemenOfDOM(this.seriesDropDown);
+    await this.clickElement(this.seriesDropDown);
+    await this.waitForLoadingExtraElemenOfDOM(this.typeOfSeries);
+    await this.clickElement(this.typeOfSeries);
+  }
 
-  //   // Local SSD: 2x375 Gb
-  //   async setSSD() {
-  //     this.selectElement(this.localSsd_1);
-  //     this.selectElement(this.localSsd_2);
-  //   }
+  // Instance type: n1-standard-8    (vCPUs: 8, RAM: 30 GB)
+  async setInstancType() {
+    await this.waitForLoadingExtraElemenOfDOM(this.machineTypeDropDown);
+    await this.clickElement(this.machineTypeDropDown);
+    await this.waitForLoadingExtraElemenOfDOM(this.machineType);
+    await this.clickElement(this.machineType);
+  }
 
-  //   // Datacenter location: Frankfurt (europe-west3)
-  //   async setDatacenterLocation() {
-  //     this.selectElement(this.datacenterLocation_1);
-  //     this.selectElement(this.datacenterLocation_2);
-  //   }
+  //Выбрать Add GPUs
+  // * Number of GPUs: 1
+  // * GPU type: NVIDIA Tesla V100
+  async setGPUs() {
+    await this.waitForLoadingExtraElemenOfDOM(this.checkBoxAddGpus);
+    await this.clickElement(this.checkBoxAddGpus);
+    await this.waitForLoadingExtraElemenOfDOM(this.gpuTypeDropDown);
+    await this.clickElement(this.gpuTypeDropDown);
+    await this.waitForLoadingExtraElemenOfDOM(this.gpuType);
+    await this.clickElement(this.gpuType);
+    await this.waitForLoadingExtraElemenOfDOM(this.numberOfGpusDropDown);
+    await this.clickElement(this.numberOfGpusDropDown);
+    await this.waitForLoadingExtraElemenOfDOM(this.numberOfGpus);
+    await this.clickElement(this.numberOfGpus);
+  }
 
-  //   // Commited usage: 1 Year
-  //   async setCommitedUsage() {
-  //     this.selectElement(this.commitedUsage_1);
-  //     this.selectElement(this.commitedUsage_2);
-  //   }
+  // Local SSD: 2x375 Gb
+  async setSSD() {
+    await this.waitForLoadingExtraElemenOfDOM(this.localSsdDropDown);
+    await this.clickElement(this.localSsdDropDown);
+    await this.waitForLoadingExtraElemenOfDOM(this.localSsd);
+    await this.clickElement(this.localSsd);
+  }
 
-  //   // 7. Нажать Add to Estimate
-  //   async clickButtonAddToEstimate() {
-  //     this.selectElement(this.buttonAdd);
-  //   }
+  // Datacenter location: Frankfurt (europe-west3)
+  async setDatacenterLocation() {
+    await this.waitForLoadingExtraElemenOfDOM(this.datacenterLocationDropDown);
+    await this.clickElement(this.datacenterLocationDropDown);
+    await this.waitForLoadingExtraElemenOfDOM(this.datacenterLocation);
+    await this.clickElement(this.datacenterLocation);
+  }
 
-  //   // 8. Выбрать пункт EMAIL ESTIMATE
-  //   async clickButtonEmailEstimate() {
-  //     this.selectElement(this.buttonEmailEstimate);
-  //   }
+  // Commited usage: 1 Year
+  async setCommitedUsage() {
+    await this.waitForLoadingExtraElemenOfDOM(this.commitedUsageDropDown);
+    await this.clickElement(this.commitedUsageDropDown);
+    await this.waitForLoadingExtraElemenOfDOM(this.commitedUsage);
+    await this.clickElement(this.commitedUsage);
+  }
 
-  //   // 9. В новой вкладке открыть https://yopmail.com/ или аналогичный сервис для генерации временных email'ов
-  //   async openNewTab() {
-  //     super.openNewTab();
-  //   }
+  // 7. Нажать Add to Estimate
+  async clickButtonAddToEstimate() {
+    await this.waitForLoadingExtraElemenOfDOM(this.buttonAddToEstimate);
+    await this.clickElement(this.buttonAddToEstimate);
+  }
 
-  //   // async openNewURL() {
-  //   //   this.openURL(this.url_2);
-  //   // }
+  // 8. Выбрать пункт EMAIL ESTIMATE
+  async clickButtonEmailEstimate() {
+    await this.waitForLoadingExtraElemenOfDOM(this.buttonEmailEstimate);
+    await this.clickElement(this.buttonEmailEstimate);
+  }
 
-  //   // 10. Скопировать почтовый адрес сгенерированный в yopmail.com
+  // 9. В новой вкладке открыть https://yopmail.com/ или аналогичный сервис для генерации временных email'ов
+  async openNewTab() {
+    await this.openNewWindow(this.yopmail);
+  }
 
-  //   // 11. Вернуться в калькулятор, в поле Email ввести адрес из предыдущего пункта
-  //   async changeTabToPrevious() {
-  //     super.changeTabToPrevious();
-  //   }
+  // 10. Скопировать почтовый адрес сгенерированный в yopmail.com
+  async setNewEmail() {
+    await this.waitForLoadingExtraElemenOfDOM(this.generatorEmail);
+    await this.clickElement(this.generatorEmail);
+    await this.waitForLoadingExtraElemenOfDOM(this.copyNewEmail);
+    await this.clickElement(this.copyNewEmail);
+  }
 
-  //   async selectInputFieldForMail() {
-  //     this.selectElement(this.fieldForMail);
-  //   }
+  // 11. Вернуться в калькулятор, в поле Email ввести адрес из предыдущего пункта
+  async returnToCalculator() {
+    await this.switchWindown(this.titleOfCalculator);
+  }
 
-  //   async inputMail() {
-  //     super.inputText();
-  //   }
+  async pasteNewEmail() {
+    await this.waitForLoadingExtraElemenOfDOM(this.inputForEmail);
+    await this.clickElement(this.inputForEmail);
+    await this.pasteText();
+  }
 
-  //   // 12. Нажать SEND EMAIL
-  //   async clickButtonSendEmail() {
-  //     this.selectElement(this.buttonSendEmail);
-  //   }
+  // 12. Нажать SEND EMAIL
+  async clickButtonSendEmail() {
+    await this.waitForLoadingExtraElemenOfDOM(this.buttonSendEmail);
+    await this.clickElement(this.buttonSendEmail);
+  }
 
-  //   // 13. Дождаться письма с рассчетом стоимости и проверить что Total Estimated Monthly Cost в письме совпадает с тем,
-  //   // что отображается в калькуляторе
-  //   async changeTabToNext() {
-  //     super.changeTabToNext();
-  //   }
+  // 13. Дождаться письма с рассчетом стоимости и проверить что Total Estimated Monthly Cost в письме совпадает с тем,
+  // что отображается в калькуляторе
+  async returnToYopmail() {
+    await this.switchWindown(this.urlYopMail);
+  }
+
+  async checkPost() {
+    await this.waitForLoadingExtraElemenOfDOM(this.buttonCheckEmail);
+    await this.clickElement(this.buttonCheckEmail);
+    await this.waitForLoadingExtraElemenOfDOM(this.choosePost);
+    await this.clickElement(this.choosePost);
+  }
 }
 
 module.exports = new CalculatorInteraction();

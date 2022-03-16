@@ -1,5 +1,5 @@
 exports.config = {
-  specs: ['./test/specs/**/Test_2.js'],
+  specs: ['./test/specs/**/Test_4.js'],
 
   exclude: [
     // 'path/to/excluded/files'

@@ -1,40 +1,49 @@
 class BaseInteraction {
-  openURL(url) {
-    browser.maximizeWindow();
-    return browser.url(url);
+  async openURL(url) {
+    await browser.maximizeWindow();
+    await browser.url(url);
   }
 
-  clickElement(element) {
-    $(element).click();
+  async clickElement(selector) {
+    await $(selector).click();
   }
 
-  inputTextIntoElement(element, text) {
-    $(element).setValue(text);
+  async inputTextIntoElement(selector, text) {
+    await $(selector).setValue(text);
   }
 
-  pressEnter() {
-    return browser.keys('Enter');
+  async pressEnter() {
+    await browser.keys('Enter');
   }
 
-  switchFrame(id) {
-    return browser.switchToFrame(id);
+  async switchFrame() {
+    await browser.switchToFrame(0);
   }
 
-  // getTextFromElement(element) {
-  //   return $(element).getText();
-  // }
-
-  getTextFromElement(element) {
-    const elem = $(element); // .getText();
-    let text = elem.getText();
-    // return text
+  async waitForLoadingExtraElemenOfDOM(selector) {
+    await $(selector).waitForDisplayed({ timeout: 5000 });
   }
 
-  // async getTextFromTitle() {   // browser.getTitle()
-  //   return await (
-  //     await this.driver.wait(until.elementLocated(By.css('html')))
-  //   ).getTitle();
-  // }
+  async clearElement(selector) {
+    await $(selector).clearValue();
+  }
+
+  async openNewWindow(url) {
+    await browser.newWindow(url);
+  }
+
+  async findElement(selector) {
+    await $(selector);
+  }
+
+  async switchWindown(selector) {
+    await browser.switchWindow(selector);
+  }
+
+  async pasteText() {
+    // await browser.keys(['ControlLeft', 'v']);
+    await browser.performActions(['ControlLeft', 'v']);
+  }
 }
 
 module.exports = BaseInteraction;
