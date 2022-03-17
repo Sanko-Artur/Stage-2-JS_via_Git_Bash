@@ -1,4 +1,5 @@
 const calculator = require('../pageobjects/CalculatorInteraction.js');
+const yopmail = require('../pageobjects/YopmailInteraction.js');
 
 describe('Test for task "Hardcore"', function () {
   const textSearchRequest = 'Google Cloud Platform Pricing Calculator';
@@ -101,17 +102,17 @@ describe('Test for task "Hardcore"', function () {
   });
 
   it('have to "9. В новой вкладке открыть https://yopmail.com/ или аналогичный сервис для генерации временных email\'ов"', async function () {
-    await calculator.openNewTab();
+    await yopmail.openNewTab();
     await browser.pause(2000);
   });
 
   it('have to "10. Скопировать почтовый адрес сгенерированный в yopmail.com"', async function () {
-    await calculator.setNewEmail();
+    await yopmail.setNewEmail();
     await browser.pause(2000);
   });
 
   it('have to "11.1 Вернуться в калькулятор"', async function () {
-    await calculator.returnToCalculator();
+    await yopmail.returnToCalculator();
     await browser.pause(2000);
     // await calculator.pasteNewEmail();
     // await browser.pause(2000);
@@ -120,6 +121,11 @@ describe('Test for task "Hardcore"', function () {
   it('have to "11.2 В поле Email ввести адрес из предыдущего пункта"', async function () {
     // await calculator.returnToCalculator();
     // await browser.pause(2000);
+    // await browser.pause(2000);
+    // await calculator.switchFrame();
+    // await browser.pause(2000);
+    // await calculator.switchFrame();
+    await browser.pause(2000);
     await calculator.pasteNewEmail();
     await browser.pause(2000);
   });
@@ -133,7 +139,7 @@ describe('Test for task "Hardcore"', function () {
   it('have to "13.1. Дождаться письма с рассчетом стоимости"', async function () {
     await calculator.returnToYopmail();
     await browser.pause(2000);
-    await calculator.checkPost();
+    await yopmail.checkPost();
     await browser.pause(2000);
   });
 

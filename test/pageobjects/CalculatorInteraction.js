@@ -56,21 +56,11 @@ class CalculatorInteraction extends BaseInteraction {
 
     this.buttonEmailEstimate = "//button[@id='email_quote']";
 
-    this.yopmail = 'https://yopmail.com/';
-
-    this.generatorEmail =
-      "//div[@id='listeliens']/child::a[@href='email-generator']";
-    this.fieldWithEmail = '#egen';
-    this.copyNewEmail = '#cprnd';
-    this.titleOfCalculator = 'Google Cloud Pricing Calculator';
-    this.inputForEmail =
-      "//md-input-container[@class='flex md-input-invalid']/child::input[@id='input_542']";
+    this.inputForEmail = "//input[@type='email']";
 
     this.buttonSendEmail = '//button[@aria-label="Send Email"]';
 
     this.urlYopMail = 'https://yopmail.com/ru/email-generator';
-    this.buttonCheckEmail = "//button[@onclick='egengo();']";
-    this.choosePost = "//div[@class='mctn']/div[@class='m']"; // //div[@class='mctn']/div[2]
   }
   // 1. Открыть https://cloud.google.com/
   async openURL() {
@@ -197,24 +187,7 @@ class CalculatorInteraction extends BaseInteraction {
     await this.clickElement(this.buttonEmailEstimate);
   }
 
-  // 9. В новой вкладке открыть https://yopmail.com/ или аналогичный сервис для генерации временных email'ов
-  async openNewTab() {
-    await this.openNewWindow(this.yopmail);
-  }
-
-  // 10. Скопировать почтовый адрес сгенерированный в yopmail.com
-  async setNewEmail() {
-    await this.waitForLoadingExtraElemenOfDOM(this.generatorEmail);
-    await this.clickElement(this.generatorEmail);
-    await this.waitForLoadingExtraElemenOfDOM(this.copyNewEmail);
-    await this.clickElement(this.copyNewEmail);
-  }
-
   // 11. Вернуться в калькулятор, в поле Email ввести адрес из предыдущего пункта
-  async returnToCalculator() {
-    await this.switchWindown(this.titleOfCalculator);
-  }
-
   async pasteNewEmail() {
     await this.waitForLoadingExtraElemenOfDOM(this.inputForEmail);
     await this.clickElement(this.inputForEmail);
@@ -231,13 +204,6 @@ class CalculatorInteraction extends BaseInteraction {
   // что отображается в калькуляторе
   async returnToYopmail() {
     await this.switchWindown(this.urlYopMail);
-  }
-
-  async checkPost() {
-    await this.waitForLoadingExtraElemenOfDOM(this.buttonCheckEmail);
-    await this.clickElement(this.buttonCheckEmail);
-    await this.waitForLoadingExtraElemenOfDOM(this.choosePost);
-    await this.clickElement(this.choosePost);
   }
 }
 

@@ -66,15 +66,11 @@ describe('Test for task "Bring It On"', function () {
   // // * Заголовок страницы браузера соответствует Paste Name / Title
   it('Title of the page should display valid value', async function () {
     await browser.pause(2000);
-    const elem = await $(contentPasteNameTitle); // await browser.getTitle(); //
+    // const elem = await $(contentPasteNameTitle); // await browser.getTitle(); //
+    // const textTitle = elem.getTitle();
+    const elem = await browser.getTitle();
     await expect(elem).toHaveTextContaining(textPasteName);
   });
-
-  // [chrome 99.0.4844.51 windows #0-0] 5) Test for task "Bring It On" Title of the page should display valid value
-  // [chrome 99.0.4844.51 windows #0-0] Expect $(`title`) to have text containing
-
-  // Expected: "how to gain dominance among developers"
-  // Received: ""
 });
 
 // npx wdio run ./wdio.conf.js
