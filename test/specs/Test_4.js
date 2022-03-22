@@ -114,22 +114,13 @@ describe('Test for task "Hardcore"', function () {
   it('have to "11.1 Вернуться в калькулятор"', async function () {
     await yopmail.returnToCalculator();
     await browser.pause(2000);
-    // await calculator.pasteNewEmail();
-    // await browser.pause(2000);
   });
 
   it('have to "11.2 В поле Email ввести адрес из предыдущего пункта"', async function () {
-    // await calculator.returnToCalculator();
-    // await browser.pause(2000);
-    // await browser.pause(2000);
-    // await calculator.switchFrame();
-    // await browser.pause(2000);
-    // await calculator.switchFrame();
     await browser.pause(2000);
     await calculator.pasteNewEmail();
     await browser.pause(2000);
   });
-  // element ("//input[@type='email']") still not displayed after 5000ms
 
   it('have to "12. Нажать SEND EMAIL"', async function () {
     await calculator.clickButtonSendEmail();

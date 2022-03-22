@@ -56,9 +56,10 @@ class CalculatorInteraction extends BaseInteraction {
 
     this.buttonEmailEstimate = "//button[@id='email_quote']";
 
-    this.inputForEmail = "//input[@type='email']";
+    this.inputForEmail = '>>.email:not([hidden])';
+    //"//input[@name='description'][@type='email']"; //  //input[@type='email']      >>.email:not([hidden])
 
-    this.buttonSendEmail = '//button[@aria-label="Send Email"]';
+    this.buttonSendEmail = '//button[@aria-label="Send Email"]'; // '>>.Send Email'
 
     this.urlYopMail = 'https://yopmail.com/ru/email-generator';
   }
