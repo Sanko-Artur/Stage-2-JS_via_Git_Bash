@@ -40,9 +40,9 @@ class BaseInteraction {
     await browser.switchWindow(selector);
   }
 
-  async pasteText() {
-    // await browser.keys(['ControlLeft', 'v']);
-    await browser.performActions(['ControlLeft', 'v']);
+  async pasteText(selector) {
+    await $(selector).click();
+    await browser.keys(['Control', 'KeyV']);
   }
 }
 

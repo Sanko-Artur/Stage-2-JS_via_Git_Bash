@@ -56,10 +56,9 @@ class CalculatorInteraction extends BaseInteraction {
 
     this.buttonEmailEstimate = "//button[@id='email_quote']";
 
-    this.inputForEmail = '>>.email:not([hidden])';
-    //"//input[@name='description'][@type='email']"; //  //input[@type='email']      >>.email:not([hidden])
+    this.inputForEmail = '//input[@type="email"]';
 
-    this.buttonSendEmail = '//button[@aria-label="Send Email"]'; // '>>.Send Email'
+    this.buttonSendEmail = '//button[@aria-label="Send Email"]';
 
     this.urlYopMail = 'https://yopmail.com/ru/email-generator';
   }
@@ -190,14 +189,14 @@ class CalculatorInteraction extends BaseInteraction {
 
   // 11. Вернуться в калькулятор, в поле Email ввести адрес из предыдущего пункта
   async pasteNewEmail() {
-    await this.waitForLoadingExtraElemenOfDOM(this.inputForEmail);
-    await this.clickElement(this.inputForEmail);
-    await this.pasteText();
+    // await this.waitForLoadingExtraElemenOfDOM(this.inputForEmail);
+    await this.pasteText(this.inputForEmail);
+    // await this.pasteText();
   }
 
   // 12. Нажать SEND EMAIL
   async clickButtonSendEmail() {
-    await this.waitForLoadingExtraElemenOfDOM(this.buttonSendEmail);
+    // await this.waitForLoadingExtraElemenOfDOM(this.buttonSendEmail);
     await this.clickElement(this.buttonSendEmail);
   }
 

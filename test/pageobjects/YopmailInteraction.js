@@ -12,7 +12,7 @@ class YopmailInteraction extends BaseInteraction {
     this.titleOfCalculator = 'Google Cloud Pricing Calculator';
 
     this.buttonCheckEmail = "//button[@onclick='egengo();']";
-    this.choosePost = "//div[@class='mctn']/div[@class='m']"; // //div[@class='mctn']/div[2]
+    this.choosePost = "//div[@class='mctn']/div[@class='m']";
   }
   // 9. В новой вкладке открыть https://yopmail.com/ или аналогичный сервис для генерации временных email'ов
   async openNewTab() {
