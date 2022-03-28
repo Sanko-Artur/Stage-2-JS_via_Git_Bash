@@ -51,10 +51,9 @@ class CalculatorInteraction extends BaseInteraction {
     this.buttonAddToEstimate =
       "//div[@class='layout-align-end-start layout-row']/child::button[@aria-label='Add to Estimate']";
 
-    // this.checkFieldVMClass =
-    //   "//md-list-item[@ng-if='item.items.editHook && item.items.editHook.initialInputs.class']/child::div[@class='md-list-item-text ng-binding']";
-
     this.buttonEmailEstimate = "//button[@id='email_quote']";
+    this.barEmailYourEstimate =
+      '//span[contains(text() , "Email Your Estimate")]';
 
     this.inputForEmail = '//input[@type="email"]';
 
@@ -187,6 +186,7 @@ class CalculatorInteraction extends BaseInteraction {
   async clickButtonEmailEstimate() {
     await this.waitForLoadingAnElemen(this.buttonEmailEstimate);
     await this.clickElement(this.buttonEmailEstimate);
+    await this.waitForLoadingAnElemen(this.barEmailYourEstimate);
   }
 
   // 11. Вернуться в калькулятор, в поле Email ввести адрес из предыдущего пункта

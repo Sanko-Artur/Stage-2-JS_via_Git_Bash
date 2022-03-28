@@ -57,32 +57,6 @@ class PastebinInteraction extends BaseInteraction {
     await this.waitForLoadingAnElemen(this.button);
     await this.clickElement(this.button);
   }
-
-  // * Проверить что код соответствует введенному в пункте 2
-  // Создать New Paste * Код: '...'
-  // async getTextFromNewPaste() {
-  //   await this.waitForLoadingAnElemen(this.contentNewPaste);
-  //   await this.getTextFromElement(this.contentNewPaste);
-  // }
-
-  // * Синтаксис подвечен для bash
-  // async getTextFromSyntaxHighlighting() {
-  //   await this.waitForLoadingAnElemen(this.contentSyntaxHighlighting);
-  //   await this.getTextFromElement(this.contentSyntaxHighlighting);
-  // }
-
-  // * Проверить что код соответствует введенному в пункте 2
-  // * Paste Expiration: "10 Minutes"
-  // async getTextFromPasteExpiration() {
-  //   await this.waitForLoadingAnElemen(this.contentPasteExpiration);
-  //   await this.getTextFromElement(this.contentPasteExpiration);
-  // }
-
-  // * Заголовок страницы браузера соответствует Paste Name / Title
-  // async getTextFromTitle() {
-  //   await this.waitForLoadingAnElemen('//title');
-  //   await super.getTextFromTitle;
-  // }
 }
 
 module.exports = new PastebinInteraction();

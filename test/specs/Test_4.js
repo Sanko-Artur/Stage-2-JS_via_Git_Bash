@@ -1,4 +1,3 @@
-const CalculatorInteraction = require('../pageobjects/CalculatorInteraction.js');
 const calculator = require('../pageobjects/CalculatorInteraction.js');
 const yopmail = require('../pageobjects/YopmailInteraction.js');
 
@@ -84,6 +83,7 @@ describe('Test for task "Hardcore"', function () {
 
   it('have to "8. Выбрать пункт EMAIL ESTIMATE"', async function () {
     await calculator.clickButtonEmailEstimate();
+    await browser.pause(2000);
   });
 
   it('have to "9. В новой вкладке открыть https://yopmail.com/ или аналогичный сервис для генерации временных email\'ов"', async function () {
@@ -111,10 +111,10 @@ describe('Test for task "Hardcore"', function () {
     await yopmail.checkPost();
   });
 
-  // it('have to "13.2. Проверить что Total Estimated Monthly Cost в письме совпадает с тем, что отображается в калькуляторе"', async function () {
-  //   const elem = $(checkFieldEstimatedInPost);
-  //   await expect(elem).toHaveTextContaining(totalEstimatedInPost);
-  // });
+  it('have to "13.2. Проверить что Total Estimated Monthly Cost в письме совпадает с тем, что отображается в калькуляторе"', async function () {
+    const elem = $(checkFieldEstimatedInPost);
+    await expect(elem).toHaveTextContaining(totalEstimatedInPost);
+  });
 });
 
 // npx wdio run ./wdio.conf.js

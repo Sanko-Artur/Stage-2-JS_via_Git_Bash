@@ -37,14 +37,8 @@ class BaseInteraction {
   }
 
   async pasteText(selector) {
-    // await $(selector).click();
-    // await browser.keys(['Control', 'KeyV']);
     await $(selector).setValue(['Control', 'KeyV']);
   }
-
-  // async switchWindownViaTab() {
-  //   await browser.keys(['Control', 'Shift', 'Tab']);
-  // }
 }
 
 module.exports = BaseInteraction;
