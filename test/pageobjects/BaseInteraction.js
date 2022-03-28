@@ -20,8 +20,8 @@ class BaseInteraction {
     await browser.switchToFrame(0);
   }
 
-  async waitForLoadingExtraElemenOfDOM(selector) {
-    await $(selector).waitForDisplayed({ timeout: 5000 });
+  async waitForLoadingAnElemen(selector) {
+    await $(selector).waitForDisplayed({ timeout: 15000 });
   }
 
   async clearElement(selector) {
@@ -32,18 +32,19 @@ class BaseInteraction {
     await browser.newWindow(url);
   }
 
-  async findElement(selector) {
-    await $(selector);
-  }
-
   async switchWindown(selector) {
     await browser.switchWindow(selector);
   }
 
   async pasteText(selector) {
-    await $(selector).click();
-    await browser.keys(['Control', 'KeyV']);
+    // await $(selector).click();
+    // await browser.keys(['Control', 'KeyV']);
+    await $(selector).setValue(['Control', 'KeyV']);
   }
+
+  // async switchWindownViaTab() {
+  //   await browser.keys(['Control', 'Shift', 'Tab']);
+  // }
 }
 
 module.exports = BaseInteraction;
