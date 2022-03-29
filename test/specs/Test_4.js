@@ -6,6 +6,8 @@ describe('Test for task "Hardcore"', function () {
 
   const textForInstaces = '4';
 
+  let title;
+
   const checkFieldEstimatedInPost = '//td[contains(text() , "USD 1,082.77")]';
   const totalEstimatedInPost = 'Estimated Monthly Cost: USD 1,082.77';
 
@@ -84,6 +86,8 @@ describe('Test for task "Hardcore"', function () {
   it('have to "8. Выбрать пункт EMAIL ESTIMATE"', async function () {
     await calculator.clickButtonEmailEstimate();
     await browser.pause(2000);
+    title = await browser.getTitle();
+    await browser.pause(2000);
   });
 
   it('have to "9. В новой вкладке открыть https://yopmail.com/ или аналогичный сервис для генерации временных email\'ов"', async function () {
@@ -95,7 +99,8 @@ describe('Test for task "Hardcore"', function () {
   });
 
   it('have to "11.1 Вернуться в калькулятор"', async function () {
-    await yopmail.returnToCalculator();
+    await browser.switchWindow(title);
+    // await yopmail.returnToCalculator();
   });
 
   it('have to "11.2 В поле Email ввести адрес из предыдущего пункта"', async function () {
