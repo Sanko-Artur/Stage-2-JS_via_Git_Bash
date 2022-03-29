@@ -30,7 +30,6 @@ class YopmailInteraction extends BaseInteraction {
   // 11. Вернуться в калькулятор, в поле Email ввести адрес из предыдущего пункта
   async returnToCalculator() {
     await this.switchWindown(this.urlCalculator);
-    // await this.switchWindownViaTab();
   }
 
   // 13. Дождаться письма с рассчетом стоимости и проверить что Total Estimated Monthly Cost в письме совпадает с тем,
