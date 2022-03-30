@@ -21,7 +21,7 @@ class BaseInteraction {
   }
 
   async waitForLoadingAnElemen(selector) {
-    await $(selector).waitForDisplayed({ timeout: 15000 });
+    await $(selector).waitForDisplayed({ timeout: 6000 });
   }
 
   async clearElement(selector) {
