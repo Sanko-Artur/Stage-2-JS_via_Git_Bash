@@ -9,10 +9,11 @@ class YopmailInteraction extends BaseInteraction {
       "//div[@id='listeliens']/child::a[@href='email-generator']";
     this.fieldWithEmail = '#egen';
     this.copyNewEmail = '#cprnd';
-    this.urlCalculator = 'Google Cloud Pricing Calculator';
+    this.fieldWithEmail = '#egen';
 
+    this.elementOfPost =
+      '//h3[contains(text(), "Total Estimated Monthly Cost")]';
     this.buttonCheckEmail = "//button[@onclick='egengo();']";
-    this.choosePost = "//button[@class='lm']";
   }
   // 9. В новой вкладке открыть https://yopmail.com/ или аналогичный сервис для генерации временных email'ов
   async openNewTab() {
@@ -23,22 +24,29 @@ class YopmailInteraction extends BaseInteraction {
   async setNewEmail() {
     await this.waitForLoadingAnElemen(this.generatorEmail);
     await this.clickElement(this.generatorEmail);
-    await this.waitForLoadingAnElemen(this.copyNewEmail);
-    await this.clickElement(this.copyNewEmail);
+  }
+
+  async getEmail() {
+    await this.getTextFromElement(this.fieldWithEmail);
   }
 
   // 11. Вернуться в калькулятор, в поле Email ввести адрес из предыдущего пункта
-  async returnToCalculator() {
-    await this.switchWindown(this.urlCalculator);
+  async returnToCalculator(handle) {
+    await this.switchWindown(handle);
   }
 
   // 13. Дождаться письма с рассчетом стоимости и проверить что Total Estimated Monthly Cost в письме совпадает с тем,
   // что отображается в калькуляторе
-  async checkPost() {
+  async clickButtonChechEmail() {
     await this.waitForLoadingAnElemen(this.buttonCheckEmail);
     await this.clickElement(this.buttonCheckEmail);
-    await this.waitForLoadingAnElemen(this.choosePost);
-    await this.clickElement(this.choosePost);
+  }
+
+  async switchFrame() {
+    await browser.switchToFrame(2);
+  }
+  async waitForDisplayPost() {
+    await this.waitForLoadingAnElemen(this.elementOfPost);
   }
 }
 

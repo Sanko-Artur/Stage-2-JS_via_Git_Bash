@@ -32,12 +32,12 @@ class BaseInteraction {
     await browser.newWindow(url);
   }
 
-  async switchWindown(selector) {
-    await browser.switchWindow(selector);
+  async switchWindown(handle) {
+    await browser.switchToWindow(handle);
   }
 
-  async pasteText(selector) {
-    await $(selector).setValue(['Control', 'KeyV']);
+  async waitForDisappearAnElemen(selector) {
+    await $(selector).waitForDisplayed({ timeout: 6000, reverse: true });
   }
 }
 

@@ -6,10 +6,13 @@ describe('Test for task "Hardcore"', function () {
 
   const textForInstaces = '4';
 
-  let url;
+  let email;
+  let googleCloudTabHandle;
+  let yopmailTabHandle;
 
-  const checkFieldEstimatedInPost = '//td[contains(text() , "USD 1,082.77")]';
-  const totalEstimatedInPost = 'Estimated Monthly Cost: USD 1,082.77';
+  const checkFieldEstimatedInPost =
+    '//h3[contains(text() , "Total Estimated Monthly Cost")]/../following-sibling::td/h3';
+  const totalEstimatedInPost = 'USD 1,082.77';
 
   it('have to "1. Открыть https://cloud.google.com/"', async function () {
     await calculator.openURL();
@@ -85,9 +88,7 @@ describe('Test for task "Hardcore"', function () {
 
   it('have to "8. Выбрать пункт EMAIL ESTIMATE"', async function () {
     await calculator.clickButtonEmailEstimate();
-    await browser.pause(2000);
-    url = await browser.getUrl();
-    await browser.pause(2000);
+    googleCloudTabHandle = await browser.getWindowHandle();
   });
 
   it('have to "9. В новой вкладке открыть https://yopmail.com/ или аналогичный сервис для генерации временных email\'ов"', async function () {
@@ -96,28 +97,36 @@ describe('Test for task "Hardcore"', function () {
 
   it('have to "10. Скопировать почтовый адрес сгенерированный в yopmail.com"', async function () {
     await yopmail.setNewEmail();
+    email = await $('#egen').getText();
+    yopmailTabHandle = await browser.getWindowHandle();
+    await browser.pause(4000);
   });
 
   it('have to "11.1 Вернуться в калькулятор"', async function () {
-    await browser.switchWindow(url);
-    // await yopmail.returnToCalculator();
+    await yopmail.returnToCalculator(googleCloudTabHandle);
+    await calculator.switchFrame();
+    await calculator.switchFrame();
   });
 
   it('have to "11.2 В поле Email ввести адрес из предыдущего пункта"', async function () {
-    await calculator.pasteNewEmail();
+    await calculator.pasteNewEmail(email);
   });
 
   it('have to "12. Нажать SEND EMAIL"', async function () {
     await calculator.clickButtonSendEmail();
+    await browser.pause(2000);
   });
 
   it('have to "13.1. Дождаться письма с рассчетом стоимости"', async function () {
-    await calculator.returnToYopmail();
-    await yopmail.checkPost();
+    await calculator.returnToYopmail(yopmailTabHandle);
+    await yopmail.clickButtonChechEmail();
+    await yopmail.switchFrame();
+    await yopmail.waitForDisplayPost();
   });
 
   it('have to "13.2. Проверить что Total Estimated Monthly Cost в письме совпадает с тем, что отображается в калькуляторе"', async function () {
-    const elem = $(checkFieldEstimatedInPost);
+    await $(checkFieldEstimatedInPost).waitForDisplayed({ timeout: 6000 });
+    const elem = await $(checkFieldEstimatedInPost);
     await expect(elem).toHaveTextContaining(totalEstimatedInPost);
   });
 });

@@ -59,7 +59,7 @@ class CalculatorInteraction extends BaseInteraction {
 
     this.buttonSendEmail = '//button[@aria-label="Send Email"]';
 
-    this.urlYopMail = 'https://yopmail.com/ru/email-generator';
+    // this.urlYopMail = 'https://yopmail.com/ru/email-generator';
   }
   // 1. Открыть https://cloud.google.com/
   async openURL() {
@@ -190,21 +190,22 @@ class CalculatorInteraction extends BaseInteraction {
   }
 
   // 11. Вернуться в калькулятор, в поле Email ввести адрес из предыдущего пункта
-  async pasteNewEmail() {
+  async pasteNewEmail(text) {
     await this.waitForLoadingAnElemen(this.inputForEmail);
-    await this.pasteText(this.inputForEmail);
+    await this.inputTextIntoElement(this.inputForEmail, text);
   }
 
   // 12. Нажать SEND EMAIL
   async clickButtonSendEmail() {
     await this.waitForLoadingAnElemen(this.buttonSendEmail);
     await this.clickElement(this.buttonSendEmail);
+    await this.waitForDisappearAnElemen(this.buttonSendEmail);
   }
 
   // 13. Дождаться письма с рассчетом стоимости и проверить что Total Estimated Monthly Cost в письме совпадает с тем,
   // что отображается в калькуляторе
-  async returnToYopmail() {
-    await this.switchWindown(this.urlYopMail);
+  async returnToYopmail(handle) {
+    await this.switchWindown(handle);
   }
 }
 
