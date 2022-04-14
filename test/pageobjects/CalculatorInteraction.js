@@ -11,7 +11,7 @@ class CalculatorInteraction extends BaseInteraction {
     this.searchResult = '//b[text()="Google Cloud Pricing Calculator"]';
 
     this.typeOFCalculator =
-      "//md-tab-item[@class='md-tab ng-scope ng-isolate-scope md-ink-ripple md-active']/child::div[@title='Compute Engine']";
+      "//md-tab-item[@class='md-tab ng-scope ng-isolate-scope md-ink-ripple md-active']/child::div";
 
     this.numberOfInstances = '#input_81';
 
@@ -49,17 +49,29 @@ class CalculatorInteraction extends BaseInteraction {
     this.commitedUsage = "//md-option[@id='select_option_119']/child::div";
 
     this.buttonAddToEstimate =
-      "//div[@class='layout-align-end-start layout-row']/child::button[@aria-label='Add to Estimate']";
+      "//div[@class='layout-align-end-start layout-row']/child::button[starts-with(@ng-disabled, 'ComputeEngineForm')]";
 
     this.buttonEmailEstimate = "//button[@id='email_quote']";
     this.barEmailYourEstimate =
-      '//span[contains(text() , "Email Your Estimate")]';
+      "//md-toolbar[@class='cpc-toolbar md-default-theme']/child::h2[@class='md-toolbar-tools']";
 
     this.inputForEmail = '//input[@type="email"]';
 
-    this.buttonSendEmail = '//button[@aria-label="Send Email"]';
+    this.buttonSendEmail =
+      '//button[starts-with(@ng-click, "emailQuote.emailQuote(true)")]';
 
-    // this.urlYopMail = 'https://yopmail.com/ru/email-generator';
+    this.checkFieldVMClass =
+      "//md-list[@class='cartitem ng-scope']/child::md-list-item[4]";
+    this.checkFieldInstanceType =
+      "//md-list[@class='cartitem ng-scope']/child::md-list-item[5]";
+    this.checkFieldRegion =
+      "//md-list[@class='cartitem ng-scope']/child::md-list-item[1]";
+    this.checkFieldVLocalSSD =
+      "//md-list-item[@class='md-1-line md-no-proxy ng-scope'][3]/child::div";
+    this.checkFieldCommitmentTerm =
+      "//md-list[@class='cartitem ng-scope']/child::md-list-item[3]";
+    this.checkFieldTotalEstimatedCostPerMonth =
+      "//h2[@class='md-title']/child::b[@class='ng-binding']";
   }
   // 1. Открыть https://cloud.google.com/
   async openURL() {
@@ -87,52 +99,52 @@ class CalculatorInteraction extends BaseInteraction {
 
   // 5. Активировать раздел COMPUTE ENGINE вверху страницы
   async chooseTypeOfCalculator() {
-    await this.waitForLoadingAnElemen(this.typeOFCalculator);
+    await this.waitForLoadingAnElement(this.typeOFCalculator);
     await this.clickElement(this.typeOFCalculator);
   }
 
   // 6. Заполнить форму следующими данными:
   //  * Number of instances: 4
   async setNumberOfInstances(text) {
-    await this.waitForLoadingAnElemen(this.numberOfInstances);
+    await this.waitForLoadingAnElement(this.numberOfInstances);
     await this.inputTextIntoElement(this.numberOfInstances, text);
   }
 
   // * What are these instances for?: оставить пустым
   async clearInstancesField() {
-    await this.waitForLoadingAnElemen(this.instances);
+    await this.waitForLoadingAnElement(this.instances);
     await this.clearElement(this.instances);
   }
 
   //  * Operating System / Software: Free: Debian, CentOS, CoreOS, Ubuntu, or other User Provided OS
   async setOperatingSystem() {
-    await this.waitForLoadingAnElemen(this.operatingSystemDropDown);
+    await this.waitForLoadingAnElement(this.operatingSystemDropDown);
     await this.clickElement(this.operatingSystemDropDown);
-    await this.waitForLoadingAnElemen(this.operatingSystem);
+    await this.waitForLoadingAnElement(this.operatingSystem);
     await this.clickElement(this.operatingSystem);
   }
 
   //  * VM Class: Regular
   async setVMClass() {
-    await this.waitForLoadingAnElemen(this.vmClassDropDown);
+    await this.waitForLoadingAnElement(this.vmClassDropDown);
     await this.clickElement(this.vmClassDropDown);
-    await this.waitForLoadingAnElemen(this.vmClass);
+    await this.waitForLoadingAnElement(this.vmClass);
     await this.clickElement(this.vmClass);
   }
 
   // set series
   async setSeries() {
-    await this.waitForLoadingAnElemen(this.seriesDropDown);
+    await this.waitForLoadingAnElement(this.seriesDropDown);
     await this.clickElement(this.seriesDropDown);
-    await this.waitForLoadingAnElemen(this.typeOfSeries);
+    await this.waitForLoadingAnElement(this.typeOfSeries);
     await this.clickElement(this.typeOfSeries);
   }
 
   // Instance type: n1-standard-8    (vCPUs: 8, RAM: 30 GB)
   async setInstancType() {
-    await this.waitForLoadingAnElemen(this.machineTypeDropDown);
+    await this.waitForLoadingAnElement(this.machineTypeDropDown);
     await this.clickElement(this.machineTypeDropDown);
-    await this.waitForLoadingAnElemen(this.machineType);
+    await this.waitForLoadingAnElement(this.machineType);
     await this.clickElement(this.machineType);
   }
 
@@ -140,72 +152,102 @@ class CalculatorInteraction extends BaseInteraction {
   // * Number of GPUs: 1
   // * GPU type: NVIDIA Tesla V100
   async setGPUs() {
-    await this.waitForLoadingAnElemen(this.checkBoxAddGpus);
+    await this.waitForLoadingAnElement(this.checkBoxAddGpus);
     await this.clickElement(this.checkBoxAddGpus);
-    await this.waitForLoadingAnElemen(this.gpuTypeDropDown);
+    await this.waitForLoadingAnElement(this.gpuTypeDropDown);
     await this.clickElement(this.gpuTypeDropDown);
-    await this.waitForLoadingAnElemen(this.gpuType);
+    await this.waitForLoadingAnElement(this.gpuType);
     await this.clickElement(this.gpuType);
-    await this.waitForLoadingAnElemen(this.numberOfGpusDropDown);
+    await this.waitForLoadingAnElement(this.numberOfGpusDropDown);
     await this.clickElement(this.numberOfGpusDropDown);
-    await this.waitForLoadingAnElemen(this.numberOfGpus);
+    await this.waitForLoadingAnElement(this.numberOfGpus);
     await this.clickElement(this.numberOfGpus);
   }
 
   // Local SSD: 2x375 Gb
   async setSSD() {
-    await this.waitForLoadingAnElemen(this.localSsdDropDown);
+    await this.waitForLoadingAnElement(this.localSsdDropDown);
     await this.clickElement(this.localSsdDropDown);
-    await this.waitForLoadingAnElemen(this.localSsd);
+    await this.waitForLoadingAnElement(this.localSsd);
     await this.clickElement(this.localSsd);
   }
 
   // Datacenter location: Frankfurt (europe-west3)
   async setDatacenterLocation() {
-    await this.waitForLoadingAnElemen(this.datacenterLocationDropDown);
+    await this.waitForLoadingAnElement(this.datacenterLocationDropDown);
     await this.clickElement(this.datacenterLocationDropDown);
-    await this.waitForLoadingAnElemen(this.datacenterLocation);
+    await this.waitForLoadingAnElement(this.datacenterLocation);
     await this.clickElement(this.datacenterLocation);
   }
 
   // Commited usage: 1 Year
   async setCommitedUsage() {
-    await this.waitForLoadingAnElemen(this.commitedUsageDropDown);
+    await this.waitForLoadingAnElement(this.commitedUsageDropDown);
     await this.clickElement(this.commitedUsageDropDown);
-    await this.waitForLoadingAnElemen(this.commitedUsage);
+    await this.waitForLoadingAnElement(this.commitedUsage);
     await this.clickElement(this.commitedUsage);
   }
 
   // 7. Нажать Add to Estimate
   async clickButtonAddToEstimate() {
-    await this.waitForLoadingAnElemen(this.buttonAddToEstimate);
+    await this.waitForLoadingAnElement(this.buttonAddToEstimate);
     await this.clickElement(this.buttonAddToEstimate);
   }
 
   // 8. Выбрать пункт EMAIL ESTIMATE
   async clickButtonEmailEstimate() {
-    await this.waitForLoadingAnElemen(this.buttonEmailEstimate);
+    await this.waitForLoadingAnElement(this.buttonEmailEstimate);
     await this.clickElement(this.buttonEmailEstimate);
-    await this.waitForLoadingAnElemen(this.barEmailYourEstimate);
+    await this.waitForLoadingAnElement(this.barEmailYourEstimate);
   }
 
   // 11. Вернуться в калькулятор, в поле Email ввести адрес из предыдущего пункта
   async pasteNewEmail(text) {
-    await this.waitForLoadingAnElemen(this.inputForEmail);
+    await this.waitForLoadingAnElement(this.inputForEmail);
     await this.inputTextIntoElement(this.inputForEmail, text);
   }
 
   // 12. Нажать SEND EMAIL
   async clickButtonSendEmail() {
-    await this.waitForLoadingAnElemen(this.buttonSendEmail);
+    await this.waitForLoadingAnElement(this.buttonSendEmail);
     await this.clickElement(this.buttonSendEmail);
-    await this.waitForDisappearAnElemen(this.buttonSendEmail);
+    await this.waitForDisappearAnElement(this.buttonSendEmail);
   }
 
   // 13. Дождаться письма с рассчетом стоимости и проверить что Total Estimated Monthly Cost в письме совпадает с тем,
   // что отображается в калькуляторе
   async returnToYopmail(handle) {
-    await this.switchWindown(handle);
+    await this.switchWindow(handle);
+  }
+
+  async getTextFromFieldVMClass() {
+    const elem = await $(this.checkFieldVMClass);
+    return elem;
+  }
+
+  async getTextFromFieldInstanceType() {
+    const elem = await $(this.checkFieldInstanceType);
+    return elem;
+  }
+
+  async getTextFromFieldRegion() {
+    const elem = await $(this.checkFieldRegion);
+    return elem;
+  }
+
+  async getTextFromFieldVLocalSSD() {
+    const elem = await $(this.checkFieldVLocalSSD);
+    return elem;
+  }
+
+  async getTextFromFieldCommitmentTerm() {
+    const elem = await $(this.checkFieldCommitmentTerm);
+    return elem;
+  }
+
+  async getTextFromFieldTotalEstimatedCostPerMonth() {
+    const elem = await $(this.checkFieldTotalEstimatedCostPerMonth);
+    return elem;
   }
 }
 

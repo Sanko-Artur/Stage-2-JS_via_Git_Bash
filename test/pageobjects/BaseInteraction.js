@@ -20,7 +20,7 @@ class BaseInteraction {
     await browser.switchToFrame(0);
   }
 
-  async waitForLoadingAnElemen(selector) {
+  async waitForLoadingAnElement(selector) {
     await $(selector).waitForDisplayed({ timeout: 6000 });
   }
 
@@ -32,11 +32,11 @@ class BaseInteraction {
     await browser.newWindow(url);
   }
 
-  async switchWindown(handle) {
+  async switchWindow(handle) {
     await browser.switchToWindow(handle);
   }
 
-  async waitForDisappearAnElemen(selector) {
+  async waitForDisappearAnElement(selector) {
     await $(selector).waitForDisplayed({ timeout: 6000, reverse: true });
   }
 }

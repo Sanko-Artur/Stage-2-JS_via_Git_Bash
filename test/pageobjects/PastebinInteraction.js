@@ -17,6 +17,10 @@ class PastebinInteraction extends BaseInteraction {
     this.syntaxHighlightingInput = "//input[@class='select2-search__field']";
 
     this.button = 'button';
+
+    this.contentNewPaste = '//div[@class="source"]/child::ol';
+    this.contentSyntaxHighlighting = '//div[@class="left"]/child::a';
+    this.contentPasteExpiration = '//div[@class="expire"]';
   }
   // 1. Открыть https://pastebin.com или аналогичный сервис в любом браузере
   async openURL() {
@@ -25,37 +29,52 @@ class PastebinInteraction extends BaseInteraction {
 
   // 2. Создать New Paste
   async inputNewPaste(text) {
-    await this.waitForLoadingAnElemen(this.newPaste);
+    await this.waitForLoadingAnElement(this.newPaste);
     await this.inputTextIntoElement(this.newPaste, text);
   }
 
   // * select Syntax Highlighting and choose "Bash"
   async setSyntaxHighlightning(text) {
-    await this.waitForLoadingAnElemen(this.syntaxHighlightingDropDown);
+    await this.waitForLoadingAnElement(this.syntaxHighlightingDropDown);
     await this.clickElement(this.syntaxHighlightingDropDown);
-    await this.waitForLoadingAnElemen(this.syntaxHighlightingInput);
+    await this.waitForLoadingAnElement(this.syntaxHighlightingInput);
     await this.inputTextIntoElement(this.syntaxHighlightingInput, text);
     await this.pressEnter();
   }
 
   // * Paste Expiration: "10 Minutes"
   async setPasteExpiration() {
-    await this.waitForLoadingAnElemen(this.dropDownPasteExpiration);
+    await this.waitForLoadingAnElement(this.dropDownPasteExpiration);
     await this.clickElement(this.dropDownPasteExpiration);
-    await this.waitForLoadingAnElemen(this.tenMinutes);
+    await this.waitForLoadingAnElement(this.tenMinutes);
     await this.clickElement(this.tenMinutes);
   }
 
   // * Paste Name / Title:
   async inputPasteName(text) {
-    await this.waitForLoadingAnElemen(this.pasteName);
+    await this.waitForLoadingAnElement(this.pasteName);
     await this.inputTextIntoElement(this.pasteName, text);
   }
 
   // 3. Сохранить paste
   async clickButtonCreateNewPaste() {
-    await this.waitForLoadingAnElemen(this.button);
+    await this.waitForLoadingAnElement(this.button);
     await this.clickElement(this.button);
+  }
+
+  async getTextFromNewPaste() {
+    const elem = await $(this.contentNewPaste);
+    return elem;
+  }
+
+  async getTextFromSyntaxHighlighting() {
+    const elem = await $(this.contentSyntaxHighlighting);
+    return elem;
+  }
+
+  async getTextFromPasteExpiration() {
+    const elem = await $(this.contentPasteExpiration);
+    return elem;
   }
 }
 
