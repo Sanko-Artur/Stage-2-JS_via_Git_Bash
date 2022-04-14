@@ -15,8 +15,7 @@ class YopmailInteraction extends BaseInteraction {
     this.buttonCheckEmail = "//button[@onclick='egengo();']";
 
     this.checkFieldEstimatedInPost =
-    '//h3[contains(text() , "Total Estimated Monthly Cost")]/../following-sibling::td/h3';
-
+      '//table/child::tbody/child::tr/child::td[2]/child::h3';
   }
   // 9. В новой вкладке открыть https://yopmail.com/ или аналогичный сервис для генерации временных email'ов
   async openNewTab() {
