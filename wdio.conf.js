@@ -1,5 +1,8 @@
+const fs = require('fs');
+const path = require('path');
+
 exports.config = {
-  specs: ['./test/specs/**/Test_4.js'],
+  specs: ['./test/specs/**/Test_1.js'],
 
   exclude: [
     // 'path/to/excluded/files'
@@ -36,5 +39,41 @@ exports.config = {
   mochaOpts: {
     ui: 'bdd',
     timeout: 60000,
-  }
+  },
+
+  onPrepare: function (config, capabilities) {
+    const directory = 'screenshots';
+
+    if (!fs.existsSync(`./${directory}`)) {
+      fs.mkdirSync(`${directory}`);
+    }
+
+    fs.readdir(`${directory}`, (err, files) => {
+      if (err) throw err;
+
+      for (const file of files) {
+        fs.unlink(path.join(`${directory}`, file), (err) => {
+          if (err) throw err;
+        });
+      }
+    });
+  },
+
+  afterTest: async function (
+    test,
+    context,
+    { error, result, duration, passed, retries }
+  ) {
+    if (!passed) {
+      const date = new Date().toLocaleString();
+      const prepareDate = date.replace(/,/g, '');
+      const newDate = prepareDate.replace(/\W/g, '_');
+      const nameFile = path.basename(test.file).replace(/\W/g, '_');
+      const nameTest = test.title.replace(/\W/g, '_');
+
+      await browser.saveScreenshot(
+        `./screenshots/Date_${newDate}_FileName_${nameFile}_TestName_${nameTest}.png`
+      );
+    }
+  },
 };
