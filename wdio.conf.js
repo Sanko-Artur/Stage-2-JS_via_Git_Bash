@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 exports.config = {
-  specs: ['./test/specs/**/Test_1.js'],
+  specs: ['./test/specs/**/Test_2.js'],
 
   exclude: [
     // 'path/to/excluded/files'
@@ -34,7 +34,15 @@ exports.config = {
 
   framework: 'mocha',
 
-  reporters: ['spec'],
+  reporters: [
+    'spec',
+    [
+      'junit',
+      {
+        outputDir: './jenkinsReporter',
+      },
+    ],
+  ],
 
   mochaOpts: {
     ui: 'bdd',
@@ -42,21 +50,36 @@ exports.config = {
   },
 
   onPrepare: function (config, capabilities) {
-    const directory = 'screenshots';
+    const screenshots = 'screenshots';
+    // const jenkinsReporter = 'jenkinsReporter';
 
-    if (!fs.existsSync(`./${directory}`)) {
-      fs.mkdirSync(`${directory}`);
+    if (!fs.existsSync(`./${screenshots}`)) {
+      fs.mkdirSync(`${screenshots}`);
     }
 
-    fs.readdir(`${directory}`, (err, files) => {
+    fs.readdir(`${screenshots}`, (err, files) => {
       if (err) throw err;
 
       for (const file of files) {
-        fs.unlink(path.join(`${directory}`, file), (err) => {
+        fs.unlink(path.join(`${screenshots}`, file), (err) => {
           if (err) throw err;
         });
       }
     });
+
+    // if (!fs.existsSync(`./${jenkinsReporter}`)) {
+    //   fs.mkdirSync(`${jenkinsReporter}`);
+    // }
+
+    // fs.readdir(`${jenkinsReporter}`, (err, files) => {
+    //   if (err) throw err;
+
+    //   for (const file of files) {
+    //     fs.unlink(path.join(`${jenkinsReporter}`, file), (err) => {
+    //       if (err) throw err;
+    //     });
+    //   }
+    // });
   },
 
   afterTest: async function (
