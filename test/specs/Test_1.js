@@ -9,7 +9,7 @@ describe('Test for task "I Can Win"', function () {
   });
 
   it('have to "Create New Paste with following data: Hello from WebDriver"', async function () {
-    await pastebin.inputNewPaste(textNewPast);
+    await pastebin.inputNewPaste(textNewPaste);
   });
 
   it('have to "Create New Paste Expiration with following data: 10 Minutes"', async function () {

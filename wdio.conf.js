@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 exports.config = {
-  specs: ['./test/specs/**/Test_1.js'],
+  specs: ['./test/specs/**/*.js'],
 
   exclude: [
     // 'path/to/excluded/files'
