@@ -1,9 +1,8 @@
-const { log } = require('console');
 const fs = require('fs');
 const path = require('path');
 
 exports.config = {
-  specs: ['./test/specs/**/Test_3.js'],
+  specs: ['./test/specs/**/Test_1.js'],
 
   exclude: [
     // 'path/to/excluded/files'
@@ -55,7 +54,6 @@ exports.config = {
 
   onPrepare: function (config, capabilities) {
     const screenshots = 'screenshots';
-    // const jenkinsReporter = 'jenkinsReporter';
 
     if (!fs.existsSync(`./${screenshots}`)) {
       fs.mkdirSync(`${screenshots}`);
@@ -70,20 +68,6 @@ exports.config = {
         });
       }
     });
-
-    // if (!fs.existsSync(`./${jenkinsReporter}`)) {
-    //   fs.mkdirSync(`${jenkinsReporter}`);
-    // }
-
-    // fs.readdir(`${jenkinsReporter}`, (err, files) => {
-    //   if (err) throw err;
-
-    //   for (const file of files) {
-    //     fs.unlink(path.join(`${jenkinsReporter}`, file), (err) => {
-    //       if (err) throw err;
-    //     });
-    //   }
-    // });
   },
 
   afterTest: async function (
