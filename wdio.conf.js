@@ -1,3 +1,4 @@
+const { log } = require('console');
 const fs = require('fs');
 const path = require('path');
 
@@ -40,6 +41,9 @@ exports.config = {
       'junit',
       {
         outputDir: './jenkinsReporter',
+        outputFileFormat: function (options) {
+          return `results-${options.cid}.${options.capabilities.browserName}.xml`;
+        },
       },
     ],
   ],
