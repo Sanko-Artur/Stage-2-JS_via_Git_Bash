@@ -34,37 +34,37 @@ describe('Test for task "Hurt Me Plenty"', function () {
     await calculator.clickButtonAddToEstimate();
   });
 
-  it('8. Проверить соответствие данных следующих полей: "* VM Class: Regular"', async function () {
+  it('8. Field VM Class should display: Regular', async function () {
     await expect(
       await calculator.getTextFromFieldVMClass()
     ).toHaveTextContaining(vmClass);
   });
 
-  it('8. Проверить соответствие данных следующих полей: "* Instance type: n1-standard-8 (vCPUs: 8, RAM: 30 GB)"', async function () {
+  it('8. Field Instance type should display: n1-standard-8 (vCPUs: 8, RAM: 30 GB)', async function () {
     await expect(
       await calculator.getTextFromFieldInstanceType()
     ).toHaveTextContaining(instanceType);
   });
 
-  it('8. Проверить соответствие данных следующих полей: "* Datacenter location: Frankfurt (europe-west3)"', async function () {
+  it('8. Field Datacenter location should display: Frankfurt (europe-west3)', async function () {
     await expect(
       await calculator.getTextFromFieldRegion()
     ).toHaveTextContaining(region);
   });
 
-  it('8. Проверить соответствие данных следующих полей: "* Local SSD: 2x375 Gb"', async function () {
+  it('8. Field Local SSD should display: 2x375 Gb', async function () {
     await expect(
       await calculator.getTextFromFieldVLocalSSD()
     ).toHaveTextContaining(localSSD);
   });
 
-  it('8. Проверить соответствие данных следующих полей: "* Commited usage: 1 Year"', async function () {
+  it('8. Field Commited usage should display: 1 Year', async function () {
     await expect(
       await calculator.getTextFromFieldCommitmentTerm()
     ).toHaveTextContaining(commitmentTerm);
   });
 
-  it('9. Проверить что сумма аренды в месяц совпадает с суммой получаемой при ручном прохождении теста.', async function () {
+  it('9. Check that the rental amount per month is the same as the amount received by manually passing the test', async function () {
     await expect(
       await calculator.getTextFromFieldTotalEstimatedCostPerMonth()
     ).toHaveTextContaining(totalEstimatedCostPerMonth);

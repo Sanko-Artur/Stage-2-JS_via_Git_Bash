@@ -13,40 +13,40 @@ class CalculatorInteraction extends BaseInteraction {
     this.typeOFCalculator =
       "//md-tab-item[@class='md-tab ng-scope ng-isolate-scope md-ink-ripple md-active']/child::div";
 
-    this.numberOfInstances = '#input_81';
+    this.numberOfInstances = '#input_82';
 
-    this.instances = '#input_82';
+    this.instances = '#input_83';
 
-    this.operatingSystemDropDown = '#select_value_label_73';
-    this.operatingSystem = "//md-option[@id='select_option_83']//child::div";
+    this.operatingSystemDropDown = '#select_value_label_74';
+    this.operatingSystem = "//md-option[@id='select_option_84']//child::div";
 
-    this.vmClassDropDown = '#select_value_label_74';
-    this.vmClass = "//md-option[@id='select_option_96']/child::div";
+    this.vmClassDropDown = '#select_value_label_75';
+    this.vmClass = "//md-option[@id='select_option_97']/child::div";
 
-    this.seriesDropDown = '//md-select-value[@id="select_value_label_76"]';
+    this.seriesDropDown = '//md-select-value[@id="select_value_label_77"]';
     this.typeOfSeries =
-      '//md-option[@id="select_option_221"]/child::div[@class="md-text ng-binding"]';
+      '//md-option[@id="select_option_222"]/child::div[@class="md-text ng-binding"]';
 
-    this.machineTypeDropDown = '//*[@id="select_value_label_77"]';
+    this.machineTypeDropDown = '//*[@id="select_value_label_78"]';
     this.machineType =
-      '//*[@id="select_option_424"]/child::div[@class="md-text ng-binding"]';
+      '//*[@id="select_option_431"]/child::div[@class="md-text ng-binding"]';
 
     this.checkBoxAddGpus =
       "//*[@aria-label='Add GPUs']/child::div[@class='md-label']";
-    this.gpuTypeDropDown = '#select_457';
-    this.gpuType = "//*[@id='select_option_464']/child::div";
-    this.numberOfGpusDropDown = '#select_value_label_456';
+    this.gpuTypeDropDown = '#select_464';
+    this.gpuType = "//*[@id='select_option_471']/child::div";
+    this.numberOfGpusDropDown = '#select_value_label_463';
     this.numberOfGpus =
-      "//md-option[@id='select_option_468']/child::div[@class='md-text ng-binding']";
+      "//md-option[@id='select_option_475']/child::div[@class='md-text ng-binding']";
 
-    this.localSsdDropDown = '#select_value_label_418';
-    this.localSsd = "//md-option[@id='select_option_445']/child::div";
+    this.localSsdDropDown = '#select_value_label_425';
+    this.localSsd = "//md-option[@id='select_option_452']/child::div";
 
-    this.datacenterLocationDropDown = '#select_value_label_79';
-    this.datacenterLocation = "//md-option[@id='select_option_242']/child::div";
+    this.datacenterLocationDropDown = '#select_value_label_80';
+    this.datacenterLocation = "//md-option[@id='select_option_243']/child::div";
 
-    this.commitedUsageDropDown = '#select_value_label_80';
-    this.commitedUsage = "//md-option[@id='select_option_119']/child::div";
+    this.commitedUsageDropDown = '#select_value_label_81';
+    this.commitedUsage = "//md-option[@id='select_option_120']/child::div";
 
     this.buttonAddToEstimate =
       "//div[@class='layout-align-end-start layout-row']/child::button[starts-with(@ng-disabled, 'ComputeEngineForm')]";

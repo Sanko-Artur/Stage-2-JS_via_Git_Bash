@@ -49,7 +49,7 @@ describe('Test for task "Hardcore"', function () {
     await yopmail.waitForDisplayPost();
   });
 
-  it('have to "13.2. Проверить что Total Estimated Monthly Cost в письме совпадает с тем, что отображается в калькуляторе"', async function () {
+  it('13.2. Check that the Total Estimated Monthly Cost in the letter equally with  displayed in the calculator', async function () {
     await expect(await yopmail.getTextFromPost()).toHaveTextContaining(
       totalEstimatedInPost
     );
