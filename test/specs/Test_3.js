@@ -1,27 +1,16 @@
 const calculator = require('../pageobjects/CalculatorInteraction.js');
+const calculatorModel = require('../models/calculator.js');
 
 describe('Test for task "Hurt Me Plenty"', function () {
-  const textSearchRequest = 'Google Cloud Platform Pricing Calculator';
-
-  const textForInstaces = '4';
-
-  const vmClass = 'VM class: regular';
-  const instanceType = 'Instance type: n1-standard-8';
-  const region = 'Region: Frankfurt';
-  const localSSD = 'Local SSD: 2x375 GiB';
-  const commitmentTerm = 'Commitment term: 1 Year';
-  const totalEstimatedCostPerMonth =
-    'Total Estimated Cost: USD 1,082.77 per 1 month';
-
   before(async function () {
     await calculator.openURL();
-    await calculator.setSearchItem(textSearchRequest);
+    await calculator.setSearchItem(calculatorModel.textSearchRequest);
     await calculator.startSearching();
     await calculator.chooseSearchResult();
     await calculator.switchFrame();
     await calculator.switchFrame();
     await calculator.chooseTypeOfCalculator();
-    await calculator.setNumberOfInstances(textForInstaces);
+    await calculator.setNumberOfInstances(calculatorModel.textForInstaces);
     await calculator.clearInstancesField();
     await calculator.setOperatingSystem();
     await calculator.setVMClass();
@@ -37,37 +26,37 @@ describe('Test for task "Hurt Me Plenty"', function () {
   it('8. Field VM Class should display: Regular', async function () {
     await expect(
       await calculator.getTextFromFieldVMClass()
-    ).toHaveTextContaining(vmClass);
+    ).toHaveTextContaining(calculatorModel.vmClass);
   });
 
   it('8. Field Instance type should display: n1-standard-8 (vCPUs: 8, RAM: 30 GB)', async function () {
     await expect(
       await calculator.getTextFromFieldInstanceType()
-    ).toHaveTextContaining(instanceType);
+    ).toHaveTextContaining(calculatorModel.instanceType);
   });
 
   it('8. Field Datacenter location should display: Frankfurt (europe-west3)', async function () {
     await expect(
       await calculator.getTextFromFieldRegion()
-    ).toHaveTextContaining(region);
+    ).toHaveTextContaining(calculatorModel.region);
   });
 
   it('8. Field Local SSD should display: 2x375 Gb', async function () {
     await expect(
       await calculator.getTextFromFieldVLocalSSD()
-    ).toHaveTextContaining(localSSD);
+    ).toHaveTextContaining(calculatorModel.localSSD);
   });
 
   it('8. Field Commited usage should display: 1 Year', async function () {
     await expect(
       await calculator.getTextFromFieldCommitmentTerm()
-    ).toHaveTextContaining(commitmentTerm);
+    ).toHaveTextContaining(calculatorModel.commitmentTerm);
   });
 
   it('9. Check that the rental amount per month is the same as the amount received by manually passing the test', async function () {
     await expect(
       await calculator.getTextFromFieldTotalEstimatedCostPerMonth()
-    ).toHaveTextContaining(totalEstimatedCostPerMonth);
+    ).toHaveTextContaining(calculatorModel.totalEstimatedCostPerMonth);
   });
 });
 

@@ -1,43 +1,37 @@
-const pastebin = require('../pageobjects/PastebinInteraction');
+const pastebin = require('../pageobjects/PastebinInteraction.js');
+const pastebinModel = require('../models/pastebin.js');
+
 
 describe('Test for task "Bring It On"', function () {
-  const textNewPaste =
-    'git config --global user.name  "New Sheriff in Town"\ngit reset $(git commit-tree HEAD^{tree} -m "Legacy code")\ngit push origin master --force';
-  const textHighlighting = 'Bash';
-  const textPasteName = 'how to gain dominance among developers';
-  const textPasteExpiration = '10 MIN';
-
-  const contentTitle = 'how to gain dominance among developers - Pastebin.com';
-
-  before(async function () {
+    before(async function () {
     await pastebin.openURL();
-    await pastebin.inputNewPaste(textNewPaste);
-    await pastebin.setSyntaxHighlightning(textHighlighting);
+    await pastebin.inputNewPaste(pastebinModel.textNewPasteTest2);
+    await pastebin.setSyntaxHighlightning(pastebinModel.textHighlighting);
     await pastebin.setPasteExpiration();
-    await pastebin.inputPasteName(textPasteName);
+    await pastebin.inputPasteName(pastebinModel.textPasteNameTest2);
     await pastebin.clickButtonCreateNewPaste();
   });
 
   it('"New Paste" should contain valid value', async function () {
     await expect(await pastebin.getTextFromNewPaste()).toHaveTextContaining(
-      textNewPaste
+      pastebinModel.textNewPasteTest2
     );
   });
 
   it('"Syntax Highlighting" should display valid value', async function () {
     await expect(
       await pastebin.getTextFromSyntaxHighlighting()
-    ).toHaveTextContaining(textHighlighting);
+    ).toHaveTextContaining(pastebinModel.textHighlighting);
   });
 
   it('"Paste Expiration" should display valid value', async function () {
     await expect(
       await pastebin.getTextFromPasteExpiration()
-    ).toHaveTextContaining(textPasteExpiration);
+    ).toHaveTextContaining(pastebinModel.textPasteExpiration);
   });
 
   it('Title of the page should display valid value', async function () {
-    await expect(browser).toHaveTitle(contentTitle);
+    await expect(browser).toHaveTitle(pastebinModel.contentTitle);
   });
 });
 

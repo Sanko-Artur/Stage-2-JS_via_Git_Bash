@@ -1,26 +1,21 @@
 const calculator = require('../pageobjects/CalculatorInteraction.js');
 const yopmail = require('../pageobjects/YopmailInteraction.js');
+const calculatorModel = require('../models/calculator.js');
 
 describe('Test for task "Hardcore"', function () {
-  const textSearchRequest = 'Google Cloud Platform Pricing Calculator';
-
-  const textForInstaces = '4';
-
   let email;
   let googleCloudTabHandle;
   let yopmailTabHandle;
 
-  const totalEstimatedInPost = 'USD 1,082.77';
-
   before(async function () {
     await calculator.openURL();
-    await calculator.setSearchItem(textSearchRequest);
+    await calculator.setSearchItem(calculatorModel.textSearchRequest);
     await calculator.startSearching();
     await calculator.chooseSearchResult();
     await calculator.switchFrame();
     await calculator.switchFrame();
     await calculator.chooseTypeOfCalculator();
-    await calculator.setNumberOfInstances(textForInstaces);
+    await calculator.setNumberOfInstances(calculatorModel.textForInstaces);
     await calculator.clearInstancesField();
     await calculator.setOperatingSystem();
     await calculator.setVMClass();
@@ -51,7 +46,7 @@ describe('Test for task "Hardcore"', function () {
 
   it('13.2. Check that the Total Estimated Monthly Cost in the letter equally with  displayed in the calculator', async function () {
     await expect(await yopmail.getTextFromPost()).toHaveTextContaining(
-      totalEstimatedInPost
+      calculatorModel.totalEstimatedInPost
     );
   });
 });
