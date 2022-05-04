@@ -22,3 +22,6 @@ describe('Test for task "I Can Win"', function () {
 });
 
 // npx wdio run ./wdio.conf.js
+// npx wdio run ./wdio.conf.js --suite otherTests
+// npx wdio run ./wdio.conf.js --suite smokeTest
+
