@@ -1,6 +1,6 @@
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
-const browserName = yargs(hideBin(process.browser)).browser;
+const browserName = yargs(hideBin(process.browserName)).browserName;
 let browser;
 
 if (browserName.name === 'chrome') {
