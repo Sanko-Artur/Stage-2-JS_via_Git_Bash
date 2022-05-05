@@ -23,7 +23,7 @@ exports.config = {
   capabilities: [
     {
       maxInstances: 5,
-      browserName: browser,
+      browserName: `${browser}`,
       acceptInsecureCerts: true,
     },
   ],

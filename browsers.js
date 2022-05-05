@@ -4,11 +4,9 @@ const argv = yargs.argv;
 let browser;
 
 if (argv.browserName === 'chrome') {
-  console.log(`${argv.browserName}`);
-  browser = 'chrome';
+  browser = argv.browserName;
 } else if (argv.browserName === 'edge') {
-  console.log(`${argv.browserName}`);
-  browser = 'edge';
+  browser = argv.browserName;
 }
 
 module.exports = { browser };
