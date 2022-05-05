@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
+const browser = require('./browsers');
 
 exports.config = {
-  specs: ['./test/specs/**/*.js'],
+  specs: ['./test/specs/**/Test_1.js'],
 
   suites: {
     smokeTest: ['./test/specs/Test_4.js'],
@@ -22,7 +23,7 @@ exports.config = {
   capabilities: [
     {
       maxInstances: 5,
-      browserName: 'chrome',
+      browserName: `${browser}`,
       acceptInsecureCerts: true,
     },
   ],
