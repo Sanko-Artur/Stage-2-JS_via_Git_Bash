@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const browser = require('./browsers');
+const { browser } = require('./browsers.js');
 
 exports.config = {
   specs: ['./test/specs/**/Test_1.js'],
@@ -23,7 +23,7 @@ exports.config = {
   capabilities: [
     {
       maxInstances: 5,
-      browserName: `${browser}`,
+      browserName: browser,
       acceptInsecureCerts: true,
     },
   ],

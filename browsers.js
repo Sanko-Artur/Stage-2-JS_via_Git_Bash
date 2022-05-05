@@ -1,12 +1,17 @@
-const yargs = require('yargs/yargs');
-const { hideBin } = require('yargs/helpers');
-const browserName = yargs(hideBin(process.browserName)).browserName;
+#!/usr/bin/env node
+const yargs = require('yargs');
+const argv = yargs.argv;
 let browser;
 
-if (browserName.name === 'chrome') {
+if (argv.browserName === 'chrome') {
+  console.log(`${argv.browserName}`);
   browser = 'chrome';
-} else if (browserName.name === 'edge') {
+} else if (argv.browserName === 'edge') {
+  console.log(`${argv.browserName}`);
   browser = 'edge';
 }
 
 module.exports = { browser };
+
+// node ./browsers.js --browserName chrome
+// node ./browsers.js --browserName edge
