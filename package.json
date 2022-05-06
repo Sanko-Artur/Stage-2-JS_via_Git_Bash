@@ -9,7 +9,10 @@
         "@wdio/mocha-framework": "^7.16.15",
         "@wdio/spec-reporter": "^7.16.14",
         "chromedriver": "^100.0.0",
-        "wdio-chromedriver-service": "^7.2.8"
+        "edgedriver": "^101.0.1210.39",
+        "wdio-chromedriver-service": "^7.2.8",
+        "wdio-edgedriver-service": "^1.2.0",
+        "yargs": "^17.4.1"
     },
     "scripts": {
         "wdio": "wdio run wdio.conf.js"

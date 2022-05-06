@@ -3,7 +3,7 @@ const path = require('path');
 const { browser } = require('./browsers.js');
 
 exports.config = {
-  specs: ['./test/specs/**/Test_1.js'],
+  specs: ['./test/specs/**/Test_2.js'],
 
   suites: {
     smokeTest: ['./test/specs/Test_4.js'],
