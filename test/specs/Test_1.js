@@ -19,11 +19,12 @@ describe('Test for task "I Can Win"', function () {
   });
 });
 
-// npx wdio run ./wdio.conf.js
-// npx wdio run ./wdio.conf.js --suite otherTests
-// npx wdio run ./wdio.conf.js --suite smokeTest
+// npx wdio run ./config/wdio.conf.js
+// npx wdio run ./config/wdio.conf.js --suite otherTests
+// npx wdio run ./config/wdio.conf.js --suite smokeTest
 
 // npm install edgedriver --save-dev
 // npm install geckodriver --save-dev
 // npm install wdio-edgedriver-service --save-dev
 // npm install wdio-geckodriver-service --save-dev
+// npm i -D msedgedriver --edgechromiumdriver_version=101.0.1210.39

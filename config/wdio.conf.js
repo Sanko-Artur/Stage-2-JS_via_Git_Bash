@@ -3,7 +3,7 @@ const path = require('path');
 const { browser } = require('./browsers.js');
 
 exports.config = {
-  specs: ['./test/specs/**/Test_2.js'],
+  specs: ['./test/specs/**/Test_1.js'],
 
   suites: {
     smokeTest: ['./test/specs/Test_4.js'],
@@ -40,7 +40,7 @@ exports.config = {
 
   connectionRetryCount: 3,
 
-  services: ['chromedriver'],
+  services: ['chromedriver', 'edgedriver'],
 
   framework: 'mocha',
 
@@ -97,14 +97,12 @@ exports.config = {
     { error, result, duration, passed, retries }
   ) {
     if (!passed) {
-      const date = new Date().toLocaleString();
-      const prepareDate = date.replace(/,/g, '');
-      const newDate = prepareDate.replace(/\W/g, '_');
+      const date = new Date().toLocaleString().replace(/:/g, '-');
       const nameFile = path.basename(test.file).replace(/\W/g, '_');
       const nameTest = test.title.replace(/\W/g, '_');
 
       await browser.saveScreenshot(
-        `./screenshots/Date_${newDate}_FileName_${nameFile}_TestName_${nameTest}.png`
+        `./screenshots/Date_${date}_FileName_${nameFile}_TestName_${nameTest}.png`
       );
     }
   },

@@ -1,6 +1,6 @@
 class BaseInteraction {
   async openURL(url) {
-    // await browser.maximizeWindow();
+    await browser.maximizeWindow();
     await browser.url(url);
   }
 
