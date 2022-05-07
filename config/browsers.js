@@ -4,18 +4,26 @@ const argv = yargs.argv;
 let browser;
 
 if (argv.browserName === 'chrome') {
-  browser = argv.browserName;
+  browser = {
+    maxInstances: 5,
+    browserName: 'chrome',
+    acceptInsecureCerts: true,
+  };
 } else if (argv.browserName === 'edge') {
-  browser = argv.browserName;
+  browser = {
+    browserName: 'MicrosoftEdge',
+    maxInstances: 1,
+  };
 }
 
 console.log(argv);
 console.log(argv.browserName);
+console.log(browser);
 
 module.exports = { browser };
 
 // node ./config/browsers.js -- --browserName chrome
-// node ./config/browsers.js --browserName chrome
+// node ./config/browsers.js --browserName chrome 
 // node ./config/browsers.js -- --browserName edge
 // node ./config/browsers.js --browserName edge
 // npm test -- --browserName edge

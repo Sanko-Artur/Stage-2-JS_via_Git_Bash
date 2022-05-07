@@ -70,6 +70,10 @@ exports.config = {
       fs.mkdirSync(`${screenshots}`);
     }
 
+    if (!fs.existsSync(`./${jenkinsReporter}`)) {
+      fs.mkdirSync(`${jenkinsReporter}`);
+    }
+
     fs.readdir(`${screenshots}`, (err, files) => {
       if (err) throw err;
 
