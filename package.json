@@ -21,4 +21,3 @@
         "smokeTest_chrome": "npx wdio run ./config/wdio.conf.js --suite smokeTest ./config/browsers.js --browserName chrome"
     }
 }
-
