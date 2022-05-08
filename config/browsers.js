@@ -21,10 +21,3 @@ console.log(argv.browserName);
 console.log(browser);
 
 module.exports = { browser };
-
-// node ./config/browsers.js -- --browserName chrome
-// node ./config/browsers.js --browserName chrome 
-// node ./config/browsers.js -- --browserName edge
-// node ./config/browsers.js --browserName edge
-// npm test -- --browserName edge
-// node ./config/wdio.conf.js --browserName chrome

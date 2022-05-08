@@ -19,11 +19,6 @@ describe('Test for task "I Can Win"', function () {
   });
 });
 
-// npx wdio run ./config/wdio.conf.js
-// npx wdio run ./config/wdio.conf.js --suite otherTests
-// npx wdio run ./config/wdio.conf.js --suite smokeTest
-// npx wdio run ./config/wdio.conf.js ./config/browsers.js --browserName edge 
-
 // npm install edgedriver --save-dev
 // npm install geckodriver --save-dev
 // npm install wdio-edgedriver-service --save-dev
