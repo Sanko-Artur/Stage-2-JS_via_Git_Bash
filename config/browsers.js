@@ -5,7 +5,7 @@ let browser;
 
 if (argv.browserName === 'chrome') {
   browser = {
-    maxInstances: 5,
+    maxInstances: 1,
     browserName: 'chrome',
     acceptInsecureCerts: true,
   };

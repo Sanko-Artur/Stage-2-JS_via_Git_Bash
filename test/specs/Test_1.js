@@ -19,8 +19,8 @@ describe('Test for task "I Can Win"', function () {
   });
 });
 
+// npm install chromedriver --save-dev
+// npm install wdio-chromedriver-service --save-dev
 // npm install edgedriver --save-dev
-// npm install geckodriver --save-dev
 // npm install wdio-edgedriver-service --save-dev
-// npm install wdio-geckodriver-service --save-dev
 // npm i -D msedgedriver --edgechromiumdriver_version=101.0.1210.39

@@ -8,10 +8,10 @@
         "@wdio/local-runner": "^7.16.16",
         "@wdio/mocha-framework": "^7.16.15",
         "@wdio/spec-reporter": "^7.16.14",
-        "chromedriver": "^100.0.0",
+        "chromedriver": "^101.0.0",
         "edgedriver": "^4.17134.1",
         "msedgedriver": "^91.0.0",
-        "wdio-chromedriver-service": "^7.2.8",
+        "wdio-chromedriver-service": "^7.3.2",
         "wdio-edgedriver-service": "^1.2.0",
         "yargs": "^17.4.1"
     },
@@ -21,3 +21,4 @@
         "smokeTest_chrome": "npx wdio run ./config/wdio.conf.js --suite smokeTest ./config/browsers.js --browserName chrome"
     }
 }
+
