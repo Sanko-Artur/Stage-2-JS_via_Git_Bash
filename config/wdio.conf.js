@@ -20,13 +20,7 @@ exports.config = {
 
   maxInstances: 10,
 
-  capabilities: [
-    {
-      maxInstances: 5,
-      browserName: 'chrome',
-      acceptInsecureCerts: true,
-    },
-  ],
+  capabilities: [browser],
 
   logLevel: 'info',
 
