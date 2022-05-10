@@ -29,18 +29,18 @@ class CalculatorInteraction extends BaseInteraction {
 
     this.machineTypeDropDown = '//*[@id="select_value_label_79"]';
     this.machineType =
-      '//*[@id="select_option_437"]/child::div[@class="md-text ng-binding"]';
+      '//*[@id="select_option_440"]/child::div[@class="md-text ng-binding"]';
 
     this.checkBoxAddGpus =
       "//*[@aria-label='Add GPUs']/child::div[@class='md-label']";
-    this.gpuTypeDropDown = '#select_471';
-    this.gpuType = "//*[@id='select_option_478']/child::div";
-    this.numberOfGpusDropDown = '#select_value_label_470';
+    this.gpuTypeDropDown = '#select_474';
+    this.gpuType = "//*[@id='select_option_481']/child::div";
+    this.numberOfGpusDropDown = '#select_value_label_473';
     this.numberOfGpus =
-      "//md-option[@id='select_option_482']/child::div[@class='md-text ng-binding']";
+      "//md-option[@id='select_option_485']/child::div[@class='md-text ng-binding']";
 
-    this.localSsdDropDown = '#select_value_label_431';
-    this.localSsd = "//md-option[@id='select_option_458']/child::div";
+    this.localSsdDropDown = '#select_value_label_434';
+    this.localSsd = "//md-option[@id='select_option_461']/child::div";
 
     this.datacenterLocationDropDown = '#select_value_label_82';
     this.datacenterLocation = "//md-option[@id='select_option_249']/child::div";

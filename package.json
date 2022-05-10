@@ -16,8 +16,11 @@
         "yargs": "^17.4.1"
     },
     "scripts": {
-        "wdio_edge": "npx wdio run ./config/wdio.conf.js ./config/browsers.js --browserName edge",
-        "otherTests_edge": "npx wdio run ./config/wdio.conf.js --suite otherTests ./config/browsers.js --browserName edge",
+        "wdio_edge": "npx wdio run ./config/wdio.conf.js ./config/browsers.js --browserName edge", 
+        "otherTests_edge": "npx wdio run ./config/wdio.conf.js --suite otherTests ./config/browsers.js --browserName edge", 
+        "otherTests_chrome": "npx wdio run ./config/wdio.conf.js --suite otherTests ./config/browsers.js --browserName chrome",
+        "smokeTest_edge": "npx wdio run ./config/wdio.conf.js --suite smokeTest ./config/browsers.js --browserName edge",
         "smokeTest_chrome": "npx wdio run ./config/wdio.conf.js --suite smokeTest ./config/browsers.js --browserName chrome"
     }
 }
+
