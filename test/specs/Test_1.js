@@ -15,7 +15,7 @@ describe('Test for task "I Can Win"', function () {
   });
 
   it('have to "Create New Paste Name / Title with following data: helloweb"', async function () {
-    await pastebin.inputPasteName(pastebinModel.textasteNameTest1);
+    await pastebin.inputPasteName(pastebinModel.textPasteNameTest1);
   });
 });
 
