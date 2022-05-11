@@ -1,0 +1,26 @@
+{
+    "name": "webdriverio-tests",
+    "version": "0.1.0",
+    "private": true,
+    "devDependencies": {
+        "@wdio/cli": "^7.16.16",
+        "@wdio/junit-reporter": "^7.19.7",
+        "@wdio/local-runner": "^7.16.16",
+        "@wdio/mocha-framework": "^7.16.15",
+        "@wdio/spec-reporter": "^7.16.14",
+        "chromedriver": "^101.0.0",
+        "edgedriver": "^4.17134.1",
+        "msedgedriver": "^91.0.0",
+        "wdio-chromedriver-service": "^7.3.2",
+        "wdio-edgedriver-service": "^1.2.0",
+        "yargs": "^17.4.1"
+    },
+    "scripts": {
+        "wdio_edge": "npx wdio run ./config/wdio.conf.js ./config/browsers.js --browserName edge", 
+        "otherTests_edge": "npx wdio run ./config/wdio.conf.js --suite otherTests ./config/browsers.js --browserName edge", 
+        "otherTests_chrome": "npx wdio run ./config/wdio.conf.js --suite otherTests ./config/browsers.js --browserName chrome",
+        "smokeTest_edge": "npx wdio run ./config/wdio.conf.js --suite smokeTest ./config/browsers.js --browserName edge",
+        "smokeTest_chrome": "npx wdio run ./config/wdio.conf.js --suite smokeTest ./config/browsers.js --browserName chrome"
+    }
+}
+
